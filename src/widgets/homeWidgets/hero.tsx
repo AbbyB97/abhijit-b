@@ -18,9 +18,11 @@ export default function HeroWidget() {
 
   return (
     <Container maxW={"5xl"}>
-      <Button onClick={toggleColorMode}>
-        {colorMode === "light" ? <BsMoonFill /> : <BsFillSunFill />}
-      </Button>
+      <Flex mt={2} justify="right">
+        <Button onClick={toggleColorMode}>
+          {colorMode === "light" ? <BsMoonFill /> : <BsFillSunFill />}
+        </Button>
+      </Flex>
       <Stack
         textAlign={"center"}
         align={"center"}
@@ -32,15 +34,14 @@ export default function HeroWidget() {
           fontSize={{ base: "3xl", sm: "4xl", md: "6xl" }}
           lineHeight={"110%"}
         >
-          Meeting scheduling{" "}
+          A Self Taught{" "}
           <Text as={"span"} color={"orange.400"}>
-            made easy
+            Developer
           </Text>
         </Heading>
         <Text color={"gray.500"} maxW={"3xl"}>
-          Never miss a meeting. Never be late for one too. Keep track of your
-          meetings and receive smart reminders in appropriate times. Read your
-          smart “Daily Agenda” every morning.
+          &quot;Pleasure in the job puts perfection in the work&quot; -
+          Aristotle.
         </Text>
         <Stack spacing={6} direction={"row"}>
           <Button
@@ -49,11 +50,12 @@ export default function HeroWidget() {
             colorScheme={"orange"}
             bg={"orange.400"}
             _hover={{ bg: "orange.500" }}
+            w="150px"
           >
-            Get started
+            My Projects
           </Button>
-          <Button rounded={"full"} px={6}>
-            Learn more
+          <Button rounded={"full"} px={6} w="150px">
+            About Me
           </Button>
         </Stack>
         <Flex w={"full"}>
