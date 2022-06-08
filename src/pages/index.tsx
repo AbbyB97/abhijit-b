@@ -7,7 +7,7 @@ import {
   useColorModeValue,
 } from "@chakra-ui/react";
 import type { NextPage } from "next";
-import HomeComponent from "../components/home";
+import HomeComponent from "components/home";
 const Home: NextPage = () => {
   return <HomeComponent />;
 };
