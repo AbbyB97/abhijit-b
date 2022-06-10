@@ -2,7 +2,8 @@ import type { AppProps } from "next/app";
 import { ChakraProvider, createLocalStorageManager } from "@chakra-ui/react";
 import theme from "theme";
 import ABDissolve from "components/shared/ab-dissolve";
-import {  useRouter } from "next/router";
+import { useRouter } from "next/router";
+import Layout from "components/layout";
 const manager = createLocalStorageManager("ab-key");
 
 function MyApp({ Component, pageProps }: AppProps) {
@@ -10,7 +11,9 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <ChakraProvider colorModeManager={manager} theme={theme}>
       <ABDissolve duration={1.5} key={route.route}>
-        <Component {...pageProps} />
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
       </ABDissolve>
     </ChakraProvider>
   );

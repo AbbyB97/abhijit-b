@@ -5,12 +5,9 @@ import {
   Stack,
   Text,
   Button,
-  Icon,
-  IconProps,
   useColorMode,
   Image,
 } from "@chakra-ui/react";
-import { BsFillSunFill, BsFillMoonFill, BsMoonFill } from "react-icons/bs";
 
 export default function HeroWidget() {
   const { colorMode, toggleColorMode } = useColorMode();
@@ -19,11 +16,6 @@ export default function HeroWidget() {
 
   return (
     <Container maxW={"5xl"}>
-      <Flex mt={2} justify="right">
-        <Button onClick={toggleColorMode}>
-          {colorMode === "light" ? <BsMoonFill /> : <BsFillSunFill />}
-        </Button>
-      </Flex>
       <Stack
         textAlign={"center"}
         align={"center"}
@@ -50,12 +42,16 @@ export default function HeroWidget() {
             px={6}
             colorScheme={"blue"}
             bg={"#175ce2"}
-            _hover={{ bg: colorMode === "light" ? "ABlue.300":"ABlue.100" }}
-            w="150px"
+            _hover={{ bg: colorMode === "light" ? "ABlue.300" : "ABlue.100" }}
+            w={{ base: "117.5px", sm: "125px", md: "150px" }}
           >
             My Projects
           </Button>
-          <Button rounded={"full"} px={6} w="150px">
+          <Button
+            rounded={"full"}
+            px={6}
+            w={{ base: "117.5px", sm: "125px", md: "150px" }}
+          >
             About Me
           </Button>
         </Stack>
