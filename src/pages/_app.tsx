@@ -1,10 +1,12 @@
 import type { AppProps } from "next/app";
-import { ChakraProvider } from '@chakra-ui/react'
+import { ChakraProvider, createLocalStorageManager } from '@chakra-ui/react'
+import theme from "theme";
+const manager = createLocalStorageManager('ab-key')
 
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <ChakraProvider>
+    <ChakraProvider colorModeManager={manager} theme={theme}>
       <Component {...pageProps} />
     </ChakraProvider>
   );
