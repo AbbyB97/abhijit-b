@@ -4,16 +4,12 @@ import {
   Heading,
   Stack,
   Text,
-  Button,
   useColorMode,
   Image,
 } from "@chakra-ui/react";
+import AButton from "widgets/AButton";
 
 export default function HeroWidget() {
-  const { colorMode, toggleColorMode } = useColorMode();
-  //   const bg = useColorModeValue("red.500", "red.200");
-  //   const color = useColorModeValue("white", "gray.800");
-
   return (
     <Container maxW={"5xl"}>
       <Stack
@@ -37,29 +33,16 @@ export default function HeroWidget() {
           Aristotle.
         </Text>
         <Stack spacing={6} direction={"row"}>
-          <Button
-            rounded={"full"}
-            px={6}
-            colorScheme={"blue"}
-            bg={"#175ce2"}
-            _hover={{ bg: colorMode === "light" ? "ABlue.300" : "ABlue.100" }}
-            w={{ base: "117.5px", sm: "125px", md: "150px" }}
-          >
-            My Projects
-          </Button>
-          <Button
-            rounded={"full"}
-            px={6}
-            w={{ base: "117.5px", sm: "125px", md: "150px" }}
-          >
-            About Me
-          </Button>
+          <AButton buttonType="primary">My Projects</AButton>
+          <AButton buttonType="secondary">About Me</AButton>
         </Stack>
         <Flex w={"full"} justify="center">
           <Image
             borderRadius="full"
             src="/images/avatar_ab.jpeg"
             alt="avatar_image"
+            maxW="300px"
+            maxH="300px"
           />
         </Flex>
       </Stack>

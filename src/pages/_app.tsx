@@ -1,9 +1,9 @@
 import type { AppProps } from "next/app";
 import { ChakraProvider, createLocalStorageManager } from "@chakra-ui/react";
 import theme from "theme";
-import ABDissolve from "components/shared/ab-dissolve";
+import ABDissolve from "modules/shared/ab-dissolve";
 import { useRouter } from "next/router";
-import Layout from "components/layout";
+import Layout from "modules/layout";
 const manager = createLocalStorageManager("ab-key");
 
 function MyApp({ Component, pageProps }: AppProps) {

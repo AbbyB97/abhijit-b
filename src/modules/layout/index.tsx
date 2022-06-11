@@ -1,5 +1,5 @@
 import { Container } from "@chakra-ui/react";
-import Navbar from "components/shared/nav-bar";
+import Navbar from "modules/shared/nav-bar";
 import React, { ReactElement } from "react";
 
 const Layout = ({ children }: { children: ReactElement }) => {

@@ -1,10 +1,10 @@
+import Hero from "components/home/hero";
 import React from "react";
-import HeroWidget from "widgets/homeWidgets/hero";
 
 const index = () => {
   return (
     <>
-      <HeroWidget />
+      <Hero />
     </>
   );
 };
