@@ -28,7 +28,7 @@ export default function Navbar() {
   const { colorMode, toggleColorMode } = useColorMode()
 
   return (
-    <Box>
+    <Box w={{ base: '91%', md: '95%' }} maxW="5xl" pos="fixed" zIndex={11}>
       <Flex
         bg={useColorModeValue('white', 'gray.800')}
         color={useColorModeValue('gray.600', 'white')}
@@ -183,7 +183,7 @@ const MobileNav = () => {
       bg={useColorModeValue('white', 'gray.800')}
       p={4}
       display={{ md: 'none' }}
-      w="95%"
+      w="97.5%"
       position="absolute"
       zIndex={10}
     >
