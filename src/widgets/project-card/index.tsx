@@ -9,14 +9,19 @@ import {
   Image,
   Flex
 } from '@chakra-ui/react'
+import { ProjectCardDataType } from './types'
 
 const IMAGE =
   'https://images.unsplash.com/photo-1518051870910-a46e30d9db16?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1350&q=80'
 
-export default function ProjectCard() {
+export default function ProjectCard({
+  projectCardData
+}: {
+  projectCardData: ProjectCardDataType
+}) {
   return (
-    <Flex 
-    //   my={{base:2,md:0}}
+    <Flex
+      //   my={{base:2,md:0}}
       borderRadius="10px"
       bg="gray.100"
       _dark={{
@@ -63,11 +68,10 @@ export default function ProjectCard() {
         </Box>
 
         <Image
-          h={48}
           w="full"
           fit="cover"
           mt={2}
-          src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=320&q=80"
+          src={projectCardData.imgSrc}
           alt="NIKE AIR"
         />
 

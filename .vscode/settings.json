@@ -1,0 +1,6 @@
+{
+  "[typescript]": {
+    // override if setted per-language
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
+}
