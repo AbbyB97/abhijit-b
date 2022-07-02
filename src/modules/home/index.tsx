@@ -1,6 +1,7 @@
 import { Container, Divider, useColorModeValue } from '@chakra-ui/react'
-import Hero from 'components/home'
+import Hero from 'components/hero'
 import ProjectSection from 'components/projects-section'
+import SocialHandles from 'components/social-handles'
 import React from 'react'
 
 const index = () => {
@@ -9,6 +10,7 @@ const index = () => {
       <Hero />
       <Divider bg={useColorModeValue('ABlue.200', 'gray.200')} />
       <ProjectSection />
+      <SocialHandles/>
     </Container>
   )
 }

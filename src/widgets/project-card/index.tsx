@@ -7,7 +7,8 @@ import {
   Stack,
   chakra,
   Image,
-  Flex
+  Flex,
+  Button
 } from '@chakra-ui/react'
 import { ProjectCardDataType } from './types'
 
@@ -21,7 +22,6 @@ export default function ProjectCard({
 }) {
   return (
     <Flex
-      //   my={{base:2,md:0}}
       borderRadius="10px"
       bg="gray.100"
       _dark={{
@@ -31,8 +31,9 @@ export default function ProjectCard({
       w="full"
       alignItems="center"
       justifyContent="center"
+      minH="600px"
     >
-      <Box
+      <Flex
         maxW="xs"
         mx="auto"
         bg="white"
@@ -41,6 +42,9 @@ export default function ProjectCard({
         }}
         shadow="lg"
         rounded="lg"
+        minH="500px"
+        direction="column"
+        justify="space-between"
       >
         <Box px={4} py={2}>
           <chakra.h1
@@ -50,6 +54,7 @@ export default function ProjectCard({
             }}
             fontWeight="bold"
             fontSize="3xl"
+            textAlign="center"
             // textTransform="uppercase"
           >
             {projectCardData.projectHeading}
@@ -57,6 +62,7 @@ export default function ProjectCard({
           <chakra.p
             mt={1}
             fontSize="sm"
+            textAlign="center"
             color="gray.600"
             _dark={{
               color: 'gray.400'
@@ -65,48 +71,46 @@ export default function ProjectCard({
             {projectCardData.projectDetail}
           </chakra.p>
         </Box>
+        <Box>
+          <Image
+            w="full"
+            fit="cover"
+            mt={2}
+            src={projectCardData.imgSrc}
+            alt="NIKE AIR"
+          />
 
-        <Image
-          w="full"
-          fit="cover"
-          mt={2}
-          src={projectCardData.imgSrc}
-          alt="NIKE AIR"
-        />
-
-        <Flex
-          alignItems="center"
-          justifyContent="space-between"
-          px={4}
-          py={2}
-          bg="gray.900"
-          roundedBottom="lg"
-          direction="row-reverse"
-        >
-          {/* <chakra.h1 color="white" fontWeight="bold" fontSize="lg">
-            $129
-          </chakra.h1> */}
-          <chakra.button
-            px={2}
-            py={1}
-            bg="white"
-            fontSize="xs"
-            color="gray.900"
-            fontWeight="bold"
-            rounded="lg"
-            textTransform="uppercase"
-            _hover={{
-              bg: 'gray.200'
-            }}
-            _focus={{
-              bg: 'gray.400'
-            }}
-            onClick={() => window.open(projectCardData.projectLink, '_blank')}
+          <Flex
+            alignItems="center"
+            justifyContent="center"
+            px={4}
+            py={2}
+            bg="gray.900"
+            roundedBottom="lg"
+            justify="center"
           >
-            Add to cart
-          </chakra.button>
-        </Flex>
-      </Box>
+            <Button
+              px={2}
+              py={0}
+              bg="white"
+              fontSize="xs"
+              color="gray.900"
+              fontWeight="bold"
+              rounded="lg"
+              textTransform="uppercase"
+              _hover={{
+                bg: 'gray.200'
+              }}
+              _focus={{
+                bg: 'gray.400'
+              }}
+              onClick={() => window.open(projectCardData.projectLink, '_blank')}
+            >
+              View Project
+            </Button>
+          </Flex>
+        </Box>
+      </Flex>
     </Flex>
   )
 }
