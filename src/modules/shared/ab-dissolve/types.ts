@@ -2,6 +2,6 @@ import { Key, ReactElement } from 'react';
 
 export interface DissolveProps {
   children: ReactElement;
-  key?: Key;
+  dissolveKey?: Key;
   duration?: number
 }

@@ -10,7 +10,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   const route = useRouter()
   return (
     <ChakraProvider colorModeManager={manager} theme={theme}>
-      <ABDissolve duration={1.5} key={route.route}>
+      <ABDissolve duration={1.5} dissolveKey={route.route}>
         <Layout>
           <Component {...pageProps} />
         </Layout>

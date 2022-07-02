@@ -10,7 +10,7 @@ const index = () => {
       <Hero />
       <Divider bg={useColorModeValue('ABlue.200', 'gray.200')} />
       <ProjectSection />
-      <SocialHandles/>
+      <SocialHandles />
     </Container>
   )
 }

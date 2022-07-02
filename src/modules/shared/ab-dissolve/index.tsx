@@ -1,12 +1,12 @@
 import { Fade } from '@chakra-ui/react'
 import { DissolveProps } from './types'
 
-const ABDissolve = ({ children, key, duration = 1 }: DissolveProps) => {
+const ABDissolve = ({ children, dissolveKey, duration = 1 }: DissolveProps) => {
   return (
     <Fade
       transition={{ enter: { duration }, exit: { duration } }}
       unmountOnExit
-      key={key}
+      key={dissolveKey}
       in
     >
       {children}
