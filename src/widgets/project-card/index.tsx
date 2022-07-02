@@ -50,9 +50,9 @@ export default function ProjectCard({
             }}
             fontWeight="bold"
             fontSize="3xl"
-            textTransform="uppercase"
+            // textTransform="uppercase"
           >
-            NIKE AIR
+            {projectCardData.projectHeading}
           </chakra.h1>
           <chakra.p
             mt={1}
@@ -62,8 +62,7 @@ export default function ProjectCard({
               color: 'gray.400'
             }}
           >
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi quos
-            quidem sequi illum facere recusandae voluptatibus
+            {projectCardData.projectDetail}
           </chakra.p>
         </Box>
 
@@ -82,10 +81,11 @@ export default function ProjectCard({
           py={2}
           bg="gray.900"
           roundedBottom="lg"
+          direction="row-reverse"
         >
-          <chakra.h1 color="white" fontWeight="bold" fontSize="lg">
+          {/* <chakra.h1 color="white" fontWeight="bold" fontSize="lg">
             $129
-          </chakra.h1>
+          </chakra.h1> */}
           <chakra.button
             px={2}
             py={1}
@@ -101,6 +101,7 @@ export default function ProjectCard({
             _focus={{
               bg: 'gray.400'
             }}
+            onClick={() => window.open(projectCardData.projectLink, '_blank')}
           >
             Add to cart
           </chakra.button>
