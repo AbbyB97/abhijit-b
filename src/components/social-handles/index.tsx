@@ -3,12 +3,19 @@ import {
   Flex,
   Heading,
   HStack,
+  Icon,
   Spinner,
   useColorMode,
   VStack
 } from '@chakra-ui/react'
 import React, { useEffect, useState } from 'react'
 import { TwitterTimelineEmbed } from 'react-twitter-embed'
+import {
+  AiFillGithub,
+  AiFillMediumCircle,
+  AiFillTwitterCircle
+} from 'react-icons/ai'
+import { TiSocialLinkedinCircular } from 'react-icons/ti'
 
 const SocialHandles = () => {
   const { colorMode } = useColorMode()
@@ -24,20 +31,68 @@ const SocialHandles = () => {
       <Heading textAlign="center" my={12}>
         Social Handles
       </Heading>
+      {!isTimeLineLoaded && (
+        <HStack p="1rem" justify="center" align="center">
+          <Spinner
+            thickness="4px"
+            speed="0.65s"
+            emptyColor="gray.200"
+            color="blue.500"
+            size="xl"
+            borderRadius="full"
+          />
+        </HStack>
+      )}
       <HStack justify="center">
-        <VStack p="1rem" justify="center" align="center">
-          {!isTimeLineLoaded && (
-            <HStack p="1rem" justify="center" align="center">
-              <Spinner
-                thickness="4px"
-                speed="0.65s"
-                emptyColor="gray.200"
-                color="blue.500"
-                size="xl"
-                borderRadius="full"
+        {isTimeLineLoaded && (
+          <VStack>
+            <Box>
+              <Icon
+                onClick={() =>
+                  window?.open('https://github.com/AbbyB97', '_blank')
+                }
+                _hover={{ cursor: 'pointer' }}
+                h="2.5rem"
+                w="2.5rem"
+                as={AiFillGithub}
               />
-            </HStack>
-          )}
+            </Box>
+            <Box>
+              <Icon
+                onClick={() =>
+                  window?.open('https://www.linkedin.com/in/abhijit-b97/', '_blank')
+                }
+                _hover={{ cursor: 'pointer' }}
+                h="3.4rem"
+                w="3.4rem"
+                as={TiSocialLinkedinCircular}
+              />
+            </Box>
+            <Box>
+              <Icon
+                onClick={() =>
+                  window?.open('https://medium.com/@abhijitbansode', '_blank')
+                }
+                _hover={{ cursor: 'pointer' }}
+                h="3.5rem"
+                w="2.9rem"
+                as={AiFillMediumCircle}
+              />
+            </Box>
+            <Box>
+              <Icon
+                onClick={() =>
+                  window?.open('https://twitter.com/b_abby97', '_blank')
+                }
+                _hover={{ cursor: 'pointer' }}
+                h="3.5rem"
+                w="2.9rem"
+                as={AiFillTwitterCircle}
+              />
+            </Box>
+          </VStack>
+        )}
+        <VStack p="1rem" justify="center" align="center">
           <Box px="10px" pt="10px" bg="white">
             <TwitterTimelineEmbed
               sourceType="profile"
@@ -51,6 +106,7 @@ const SocialHandles = () => {
             />
           </Box>
         </VStack>
+        u
       </HStack>
     </Box>
   )

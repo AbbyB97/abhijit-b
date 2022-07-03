@@ -31,8 +31,8 @@ export default function HeroWidget() {
           borderRadius="full"
           src="/images/avatar_ab.jpeg"
           alt="avatar_image"
-          maxW="300px"
-          maxH="300px"
+          maxW="250px"
+          maxH="250px"
         />
       </Flex>
     </Stack>
