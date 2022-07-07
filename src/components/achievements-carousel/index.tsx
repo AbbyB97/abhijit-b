@@ -17,7 +17,7 @@ import Slider from 'react-slick'
 
 // Settings for the slider
 const settings = {
-  dots: true,
+  dots: false,
   arrows: false,
   fade: true,
   infinite: true,
@@ -42,19 +42,20 @@ export default function AchievementsCarousel() {
   // This can be static or loaded from a server
   const cards = [
     {
-      title: 'Competition Winner',
+      title: 'Project Competition Winner',
       text: "The project board is an exclusive resource for contract work. It's perfect for freelancers, agencies, and moonlighters.",
       image: '/images/achievements/1.jpg'
     },
+ 
     {
-      title: 'Competition Winner',
-      text: "The project board is an exclusive resource for contract work. It's perfect for freelancers, agencies, and moonlighters.",
-      image: '/images/achievements/2.jpg'
-    },
-    {
-      title: 'Smart India Hackathon',
+      title: 'Smart India Hackathon Finalist',
       text: "The project board is an exclusive resource for contract work. It's perfect for freelancers, agencies, and moonlighters.",
       image: '/images/achievements/3.jpg'
+    },
+    {
+      title: 'Project Competition Winner',
+      text: "The project board is an exclusive resource for contract work. It's perfect for freelancers, agencies, and moonlighters.",
+      image: '/images/achievements/2.jpg'
     },
     {
       title: 'GDG organizer',
@@ -76,7 +77,7 @@ export default function AchievementsCarousel() {
   return (
     <Box
       position={'relative'}
-      height={'600px'}
+      height={'550px'}
       width={'full'}
       overflow={'hidden'}
     >
@@ -124,68 +125,22 @@ export default function AchievementsCarousel() {
       {/* Slider */}
       <Slider {...settings} ref={(slider) => setSlider(slider)}>
         {cards.map((card, index) => (
-          <Box h="30rem" position="relative">
+          <Box >
             <HStack
               h={{ base: '22.5rem', md: 'auto' }}
               justify="center"
               align="center"
             >
-              <Image src={card.image} />
+              <Image h="300px" src={card.image} />
             </HStack>
-            <Stack
-              borderRadius="10px"
-              p=".75rem"
-              bg="gray.100"
-              opacity=".6"
-              spacing={6}
-              w={'full'}
-              maxW={'lg'}
-              position="absolute"
-              top="35%"
-              left={{ base: '1px', sm: '1rem', md: '20%', lg: '25%' }}
-              transform="translate(0, -50%)"
-            >
-              {/* <Heading
-                color="black"
-                fontSize={{ base: '2xl', md: '3xl', lg: '4xl' }}
-              >
-                {card.title}
-              </Heading> */}
-              <Heading
+            <Heading
+              mt="10px"
                 textAlign="center"
                 fontSize={{ base: '21px', lg: '24px' }}
                 color="GrayText"
               >
                 {card.title}
               </Heading>
-            </Stack>
-            {/* <Box
-              key={index}
-              height={'6xl'}
-              position="relative"
-              backgroundPosition="center"
-              backgroundRepeat="no-repeat"
-              backgroundSize="cover"
-              backgroundImage={`url(${card.image})`}
-            >
-              <Container size="container.lg" height="600px" position="relative">
-                <Stack
-                  spacing={6}
-                  w={'full'}
-                  maxW={'lg'}
-                  position="absolute"
-                  top="50%"
-                  transform="translate(0, -50%)"
-                >
-                  <Heading fontSize={{ base: '3xl', md: '4xl', lg: '5xl' }}>
-                    {card.title}
-                  </Heading>
-                  <Text fontSize={{ base: 'md', lg: 'lg' }} color="GrayText">
-                    {card.text}
-                  </Text>
-                </Stack>
-              </Container>
-            </Box> */}
           </Box>
         ))}
       </Slider>
