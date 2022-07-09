@@ -62,11 +62,6 @@ export default function AchievementsCarousel() {
       text: "The project board is an exclusive resource for contract work. It's perfect for freelancers, agencies, and moonlighters.",
       image: '/images/achievements/4.jpeg'
     },
-    // {
-    //   title: 'Codejams',
-    //   text: "The project board is an exclusive resource for contract work. It's perfect for freelancers, agencies, and moonlighters.",
-    //   image: '/images/achievements/5.jpg'
-    // },
     {
       title: 'TechNgage Hackathon',
       text: "The project board is an exclusive resource for contract work. It's perfect for freelancers, agencies, and moonlighters.",
@@ -137,7 +132,8 @@ export default function AchievementsCarousel() {
               mt="10px"
                 textAlign="center"
                 fontSize={{ base: '21px', lg: '24px' }}
-                color="GrayText"
+                color="gray.400"
+                fontWeight={500}
               >
                 {card.title}
               </Heading>
