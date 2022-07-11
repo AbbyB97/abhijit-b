@@ -1,8 +1,11 @@
 import { Flex, Heading, Stack, Text, Image } from '@chakra-ui/react'
+import { Element } from 'react-scroll'
 import AButton from 'widgets/AButton'
 
 export default function HeroWidget() {
   return (
+    <Element name="Hero-Section">
+
     <Stack
       textAlign={'center'}
       align={'center'}
@@ -36,5 +39,6 @@ export default function HeroWidget() {
         />
       </Flex>
     </Stack>
+    </Element>
   )
 }

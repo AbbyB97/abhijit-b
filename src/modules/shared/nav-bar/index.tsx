@@ -22,6 +22,7 @@ import {
   ChevronRightIcon
 } from '@chakra-ui/icons'
 import { BsFillSunFill, BsMoonFill } from 'react-icons/bs'
+import { scroller } from 'react-scroll'
 
 export default function Navbar() {
   const { isOpen, onToggle } = useDisclosure()
@@ -59,6 +60,15 @@ export default function Navbar() {
             textAlign={useBreakpointValue({ base: 'center', md: 'left' })}
             fontFamily={'heading'}
             color={useColorModeValue('gray.800', 'white')}
+            onClick={() =>
+              scroller.scrollTo('Hero-Section', {
+                duration: 750,
+                delay: 50,
+                smooth: true,
+                // containerId: 'ContainerElementID',
+                offset: 50 // Scrolls to element + 50 pixels down the page
+              })
+            }
           >
             Abhijit
           </Text>
@@ -104,7 +114,7 @@ const DesktopNav = () => {
             <PopoverTrigger>
               <Link
                 p={2}
-                href={navItem.href ?? '#'}
+                // href={navItem.href ?? '#'}
                 fontSize={'sm'}
                 fontWeight={500}
                 color={linkColor}
@@ -112,6 +122,18 @@ const DesktopNav = () => {
                   textDecoration: 'none',
                   color: linkHoverColor
                 }}
+                onClick={
+                  !navItem.children
+                    ? () =>
+                        scroller.scrollTo('Hero-Section', {
+                          duration: 750,
+                          delay: 50,
+                          smooth: true,
+                          // containerId: 'ContainerElementID',
+                          offset: 50 // Scrolls to element + 50 pixels down the page
+                        })
+                    : () => {}
+                }
               >
                 {navItem.label}
               </Link>
@@ -202,7 +224,7 @@ const MobileNavItem = ({ label, children, href }: NavItem) => {
       <Flex
         py={2}
         as={Link}
-        href={href ?? '#'}
+        // href={href ?? '#'}
         justify={'space-between'}
         align={'center'}
         _hover={{
@@ -212,6 +234,18 @@ const MobileNavItem = ({ label, children, href }: NavItem) => {
         <Text
           fontWeight={600}
           color={useColorModeValue('gray.600', 'gray.200')}
+          onClick={
+            !children
+              ? () =>
+                  scroller.scrollTo('Hero-Section', {
+                    duration: 750,
+                    delay: 50,
+                    smooth: true,
+                    // containerId: 'ContainerElementID',
+                    offset: 50 // Scrolls to element + 50 pixels down the page
+                  })
+              : () => {}
+          }
         >
           {label}
         </Text>
