@@ -25,7 +25,7 @@ import { BsFillSunFill, BsMoonFill } from 'react-icons/bs'
 import { scroller } from 'react-scroll'
 
 export default function Navbar() {
-  const { isOpen, onToggle } = useDisclosure()
+  const { isOpen, onToggle: onNavToggle } = useDisclosure()
   const { colorMode, toggleColorMode } = useColorMode()
 
   return (
@@ -47,7 +47,7 @@ export default function Navbar() {
           display={{ base: 'flex', md: 'none' }}
         >
           <IconButton
-            onClick={onToggle}
+            onClick={onNavToggle}
             icon={
               isOpen ? <CloseIcon w={3} h={3} /> : <HamburgerIcon w={5} h={5} />
             }
@@ -95,7 +95,7 @@ export default function Navbar() {
       </Flex>
 
       <Collapse in={isOpen} animateOpacity>
-        <MobileNav />
+        <MobileNav onNavToggle={onNavToggle} />
       </Collapse>
     </Box>
   )
@@ -122,39 +122,19 @@ const DesktopNav = () => {
                   textDecoration: 'none',
                   color: linkHoverColor
                 }}
-                onClick={
-                  !navItem.children
-                    ? () =>
-                        scroller.scrollTo('Hero-Section', {
-                          duration: 750,
-                          delay: 50,
-                          smooth: true,
-                          // containerId: 'ContainerElementID',
-                          offset: 50 // Scrolls to element + 50 pixels down the page
-                        })
-                    : () => {}
+                onClick={() =>
+                  scroller.scrollTo(navItem.sectionName, {
+                    duration: 750,
+                    delay: 50,
+                    smooth: true,
+                    // containerId: 'ContainerElementID',
+                    offset: 50 // Scrolls to element + 50 pixels down the page
+                  })
                 }
               >
                 {navItem.label}
               </Link>
             </PopoverTrigger>
-
-            {navItem.children && (
-              <PopoverContent
-                border={0}
-                boxShadow={'xl'}
-                bg={popoverContentBgColor}
-                p={4}
-                rounded={'xl'}
-                minW={'sm'}
-              >
-                <Stack>
-                  {navItem.children.map((child) => (
-                    <DesktopSubNav key={child.label} {...child} />
-                  ))}
-                </Stack>
-              </PopoverContent>
-            )}
           </Popover>
         </Box>
       ))}
@@ -162,44 +142,7 @@ const DesktopNav = () => {
   )
 }
 
-const DesktopSubNav = ({ label, href, subLabel }: NavItem) => {
-  return (
-    <Link
-      href={href}
-      role={'group'}
-      display={'block'}
-      p={2}
-      rounded={'md'}
-      _hover={{ bg: useColorModeValue('pink.50', 'gray.900') }}
-    >
-      <Stack direction={'row'} align={'center'}>
-        <Box>
-          <Text
-            transition={'all .3s ease'}
-            _groupHover={{ color: 'pink.400' }}
-            fontWeight={500}
-          >
-            {label}
-          </Text>
-          <Text fontSize={'sm'}>{subLabel}</Text>
-        </Box>
-        <Flex
-          transition={'all .3s ease'}
-          transform={'translateX(-10px)'}
-          opacity={0}
-          _groupHover={{ opacity: '100%', transform: 'translateX(0)' }}
-          justify={'flex-end'}
-          align={'center'}
-          flex={1}
-        >
-          <Icon color={'pink.400'} w={5} h={5} as={ChevronRightIcon} />
-        </Flex>
-      </Stack>
-    </Link>
-  )
-}
-
-const MobileNav = () => {
+const MobileNav = ({ onNavToggle }: { onNavToggle: () => void }) => {
   return (
     <Stack
       bg={useColorModeValue('white', 'gray.800')}
@@ -210,17 +153,26 @@ const MobileNav = () => {
       zIndex={10}
     >
       {NAV_ITEMS.map((navItem) => (
-        <MobileNavItem key={navItem.label} {...navItem} />
+        <MobileNavItem
+          onNavToggle={onNavToggle}
+          key={navItem.label}
+          {...navItem}
+        />
       ))}
     </Stack>
   )
 }
 
-const MobileNavItem = ({ label, children, href }: NavItem) => {
-  const { isOpen, onToggle } = useDisclosure()
+const MobileNavItem = ({
+  label,
+  href,
+  sectionName,
+  onNavToggle
+}: NavItem & { onNavToggle: () => void }) => {
+  const { isOpen, onToggle, onClose } = useDisclosure()
 
   return (
-    <Stack spacing={4} onClick={children && onToggle}>
+    <Stack spacing={4} onClick={onToggle}>
       <Flex
         py={2}
         as={Link}
@@ -234,49 +186,20 @@ const MobileNavItem = ({ label, children, href }: NavItem) => {
         <Text
           fontWeight={600}
           color={useColorModeValue('gray.600', 'gray.200')}
-          onClick={
-            !children
-              ? () =>
-                  scroller.scrollTo('Hero-Section', {
-                    duration: 750,
-                    delay: 50,
-                    smooth: true,
-                    // containerId: 'ContainerElementID',
-                    offset: 50 // Scrolls to element + 50 pixels down the page
-                  })
-              : () => {}
-          }
+          onClick={() => {
+            scroller.scrollTo(sectionName, {
+              duration: 750,
+              delay: 50,
+              smooth: true,
+              // containerId: 'ContainerElementID',
+              offset: 50 // Scrolls to element + 50 pixels down the page
+            })
+            onNavToggle()
+          }}
         >
           {label}
         </Text>
-        {children && (
-          <Icon
-            as={ChevronDownIcon}
-            transition={'all .25s ease-in-out'}
-            transform={isOpen ? 'rotate(180deg)' : ''}
-            w={6}
-            h={6}
-          />
-        )}
       </Flex>
-
-      <Collapse in={isOpen} animateOpacity style={{ marginTop: '0!important' }}>
-        <Stack
-          mt={2}
-          pl={4}
-          borderLeft={1}
-          borderStyle={'solid'}
-          borderColor={useColorModeValue('gray.200', 'gray.700')}
-          align={'start'}
-        >
-          {children &&
-            children.map((child) => (
-              <Link key={child.label} py={2} href={child.href}>
-                {child.label}
-              </Link>
-            ))}
-        </Stack>
-      </Collapse>
     </Stack>
   )
 }
@@ -284,47 +207,25 @@ const MobileNavItem = ({ label, children, href }: NavItem) => {
 interface NavItem {
   label: string
   subLabel?: string
-  children?: Array<NavItem>
   href?: string
+  sectionName: string
 }
 
 const NAV_ITEMS: Array<NavItem> = [
   {
-    label: 'Inspiration',
-    children: [
-      {
-        label: 'Explore Design Work',
-        subLabel: 'Trending Design to inspire you',
-        href: '#'
-      },
-      {
-        label: 'New & Noteworthy',
-        subLabel: 'Up-and-coming Designers',
-        href: '#'
-      }
-    ]
+    label: 'Projects',
+    sectionName: 'Projects-Section'
   },
   {
-    label: 'Find Work',
-    children: [
-      {
-        label: 'Job Board',
-        subLabel: 'Find your dream design job',
-        href: '#'
-      },
-      {
-        label: 'Freelance Projects',
-        subLabel: 'An exclusive list for contract work',
-        href: '#'
-      }
-    ]
+    label: 'Skills',
+    sectionName: 'Skills-Section'
   },
   {
-    label: 'Learn Design',
-    href: '#'
+    label: 'Achievements',
+    sectionName: 'Achievements-Section'
   },
   {
-    label: 'Hire Designers',
-    href: '#'
+    label: 'Social',
+    sectionName: 'Social-Section'
   }
 ]

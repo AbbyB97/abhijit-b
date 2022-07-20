@@ -6,13 +6,14 @@ import {
   SimpleGrid,
   Text
 } from '@chakra-ui/react'
+import { Element } from 'react-scroll'
 import React from 'react'
 import ProjectCard from 'widgets/project-card'
 import projectCardDataArray from 'static/projectCardData'
 
 const ProjectSection = () => {
   return (
-    <>
+    <Element name="Projects-Section">
       <Heading textAlign="center" my={12}>
         My recent projects
       </Heading>
@@ -29,7 +30,7 @@ const ProjectSection = () => {
           </GridItem>
         ))}
       </Grid>
-    </>
+    </Element>
   )
 }
 
