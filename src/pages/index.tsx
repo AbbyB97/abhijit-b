@@ -1,15 +1,8 @@
-import {
-  Box,
-  Button,
-  Flex,
-  Text,
-  useColorMode,
-  useColorModeValue,
-} from "@chakra-ui/react";
-import type { NextPage } from "next";
-import HomeComponent from "components/home";
-const Home: NextPage = () => {
-  return <HomeComponent />;
-};
+import type { NextPage } from 'next'
+import HomeModule from 'modules/home'
 
-export default Home;
+const Home: NextPage = () => {
+  return <HomeModule />
+}
+
+export default Home

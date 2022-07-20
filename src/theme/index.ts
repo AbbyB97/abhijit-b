@@ -16,7 +16,7 @@ const colorsConfig = {
             200: '#175ce2',
             300: '#124dc2',
             400: '#0f3caa',
-            500: '#0b2b92',
+            500: '#0b2b92'
         }
     }
 }
@@ -25,7 +25,7 @@ const colorsConfig = {
 // 3. extend the theme
 const theme = extendTheme({
     ...config,
-    ...colorsConfig 
+    ...colorsConfig
 
 })
 
