@@ -1,6 +1,7 @@
 import { Flex, Heading, Stack, Text, Image } from '@chakra-ui/react'
 import { Element } from 'react-scroll'
 import AButton from 'widgets/AButton'
+import { scroller } from 'react-scroll'
 
 export default function HeroWidget() {
   return (
@@ -26,8 +27,36 @@ export default function HeroWidget() {
           Aristotle.
         </Text>
         <Stack spacing={6} direction={'row'}>
-          <AButton buttonType="primary">My Projects</AButton>
-          <AButton buttonType="secondary">About Me</AButton>
+          <AButton
+            onClick={() => {
+              scroller.scrollTo('Projects-Section', {
+                duration: 750,
+                delay: 50,
+                // smooth: true,
+                // containerId: 'ContainerElementID',
+                smooth: 'easeInOutQuint',
+                offset: -65 // Scrolls to element + 50 pixels down the page
+              })
+            }}
+            buttontype="primary"
+          >
+            My Projects
+          </AButton>
+          <AButton
+            buttontype="secondary"
+            onClick={() => {
+              scroller.scrollTo('Skills-Section', {
+                duration: 750,
+                delay: 50,
+                // smooth: true,
+                // containerId: 'ContainerElementID',
+                smooth: 'easeInOutQuint',
+                offset: -65 // Scrolls to element + 50 pixels down the page
+              })
+            }}
+          >
+            About Me
+          </AButton>
         </Stack>
         <Flex w={'full'} justify="center">
           <Image

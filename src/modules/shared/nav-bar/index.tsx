@@ -59,14 +59,16 @@ export default function Navbar() {
           <Text
             textAlign={useBreakpointValue({ base: 'center', md: 'left' })}
             fontFamily={'heading'}
+            _hover={{ cursor: 'pointer' }}
             color={useColorModeValue('gray.800', 'white')}
             onClick={() =>
               scroller.scrollTo('Hero-Section', {
                 duration: 750,
                 delay: 50,
-                smooth: true,
+                // smooth: true,
                 // containerId: 'ContainerElementID',
-                offset: 50 // Scrolls to element + 50 pixels down the page
+                smooth: 'easeInOutQuint',
+                offset: -65 // Scrolls to element + 50 pixels down the page
               })
             }
           >
@@ -126,9 +128,10 @@ const DesktopNav = () => {
                   scroller.scrollTo(navItem.sectionName, {
                     duration: 750,
                     delay: 50,
-                    smooth: true,
+                    // smooth: true,
                     // containerId: 'ContainerElementID',
-                    offset: 50 // Scrolls to element + 50 pixels down the page
+                    smooth: 'easeInOutQuint',
+                    offset: -65 // Scrolls to element + 50 pixels down the page
                   })
                 }
               >
@@ -190,9 +193,10 @@ const MobileNavItem = ({
             scroller.scrollTo(sectionName, {
               duration: 750,
               delay: 50,
-              smooth: true,
+              // smooth: true,
               // containerId: 'ContainerElementID',
-              offset: 50 // Scrolls to element + 50 pixels down the page
+              smooth: 'easeInOutQuint',
+              offset: -65 // Scrolls to element + 50 pixels down the page
             })
             onNavToggle()
           }}
