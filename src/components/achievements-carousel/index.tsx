@@ -101,7 +101,7 @@ export default function AchievementsCarousel() {
         {/* Slider */}
         <Slider {...settings} ref={(slider) => setSlider(slider)}>
           {cards.map((card, index) => (
-            <Box>
+            <Box key={index}>
               <Heading
                 mb="10px"
                 textAlign="center"
