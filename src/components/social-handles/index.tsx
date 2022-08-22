@@ -5,6 +5,7 @@ import {
   HStack,
   Icon,
   Spinner,
+  Stack,
   useColorMode,
   VStack
 } from '@chakra-ui/react'
@@ -45,9 +46,9 @@ const SocialHandles = () => {
             />
           </HStack>
         )}
-        <HStack justify="center">
+        <Stack direction={{base:"column-reverse",md:'row'}} justify="center" align="center">
           {isTimeLineLoaded && (
-            <VStack>
+            <Stack justify="center" align="center" direction={{base:"row",md:'column'}} >
               <Box>
                 <Icon
                   onClick={() =>
@@ -95,7 +96,7 @@ const SocialHandles = () => {
                   as={AiFillTwitterCircle}
                 />
               </Box>
-            </VStack>
+            </Stack>
           )}
           <VStack p="1rem" justify="center" align="center">
             <Box
@@ -129,8 +130,7 @@ const SocialHandles = () => {
               />
             </Box>
           </VStack>
-          u
-        </HStack>
+        </Stack>
       </Box>
     </Element>
   )
