@@ -98,7 +98,25 @@ const SocialHandles = () => {
             </VStack>
           )}
           <VStack p="1rem" justify="center" align="center">
-            <Box px="10px" pt="10px" bg="white">
+            <Box
+              maxH="500px"
+              overflowY="scroll"
+              css={{
+                '&::-webkit-scrollbar': {
+                  width: '4px'
+                },
+                '&::-webkit-scrollbar-track': {
+                  width: '6px'
+                },
+                '&::-webkit-scrollbar-thumb': {
+                  background: 'gray',
+                  borderRadius: '24px'
+                }
+              }}
+              px="10px"
+              pt="10px"
+              bg="white"
+            >
               <TwitterTimelineEmbed
                 sourceType="profile"
                 screenName="b_abby97"
