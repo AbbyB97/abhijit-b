@@ -2,6 +2,7 @@ import { Flex, Heading, Stack, Text, Image } from '@chakra-ui/react'
 import { Element } from 'react-scroll'
 import AButton from 'widgets/AButton'
 import { scroller } from 'react-scroll'
+import profileData from 'static/portfolioProfile'
 
 export default function HeroWidget() {
   return (
@@ -17,14 +18,14 @@ export default function HeroWidget() {
           fontSize={{ base: '3xl', sm: '4xl', md: '6xl' }}
           lineHeight={'110%'}
         >
-          A Self Taught{' '}
+          {profileData.header.lineOne}
           <Text as={'span'} color={'ABlue.200'}>
-            Developer
+            {profileData.header.lineTwo}
           </Text>
         </Heading>
         <Text color={'gray.500'} maxW={'3xl'}>
-          &quot;Pleasure in the job puts perfection in the work&quot; -
-          Aristotle.
+          {profileData.header.favouriteQuote}{` - `}
+          {profileData.header.favouriteQuoteAuthor}
         </Text>
         <Stack spacing={6} direction={'row'}>
           <AButton

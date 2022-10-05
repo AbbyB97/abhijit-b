@@ -16,7 +16,7 @@ import {
   FcInTransit,
   FcGlobe
 } from 'react-icons/fc'
-import { BsGlobe } from 'react-icons/bs'
+// import { BsGlobe } from 'react-icons/bs'
 import { FaGamepad } from 'react-icons/fa'
 import { Element } from 'react-scroll'
 interface FeatureProps {
