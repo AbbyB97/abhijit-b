@@ -1,6 +1,31 @@
+import {
+  AiFillGithub,
+  AiFillMediumCircle,
+  AiFillTwitterCircle
+} from 'react-icons/ai'
+import { TiSocialLinkedinCircular } from 'react-icons/ti'
+
 const profileData = {
   // update these values to see the changes
   name: 'Abhijit',
+  socialHandles: [
+    {
+      icon: AiFillTwitterCircle,
+      link: 'https://twitter.com/b_abby97'
+    },
+    {
+      icon: AiFillMediumCircle,
+      link: 'https://medium.com/@abhijitbansode'
+    },
+    {
+      icon: TiSocialLinkedinCircular,
+      link: 'https://www.linkedin.com/in/abhijit-b97/'
+    },
+    {
+      icon: AiFillGithub,
+      link: 'https://github.com/AbbyB97'
+    }
+  ],
   header: {
     lineOne: 'A Self Taught ',
     lineTwo: 'Developer',
