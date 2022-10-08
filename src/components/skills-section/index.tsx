@@ -25,7 +25,7 @@ interface FeatureProps {
   icon: ReactElement
 }
 
-const Feature = ({ title, text, icon }: FeatureProps) => {
+const SkillsWidget = ({ title, text, icon }: FeatureProps) => {
   return (
     <Stack justify="center" textAlign="center">
       <HStack justify="center">
@@ -57,26 +57,26 @@ export default function SkillsSection() {
           Skills
         </Heading>
         <SimpleGrid columns={{ base: 1, md: 2 }} spacing={10}>
-          <Feature
+          <SkillsWidget
             icon={<Icon as={FcGlobe} w={10} h={10} />}
             title={'Web Development'}
             text={
               'Experienced in making responsive scalable Web apps with React & Next.js.'
             }
           />
-          <Feature
+          <SkillsWidget
             icon={<Icon as={FcPhoneAndroid} w={10} h={10} />}
             title={'Mobile Development'}
             text={'Experienced in making hybrid mobile apps with React Native'}
           />
-          <Feature
+          <SkillsWidget
             icon={<Icon as={FcDatabase} w={10} h={10} />}
             title={'Backend Development'}
             text={
               'Understanding of the backend technologies like Node.js, Express.js, MongoDB, Django.'
             }
           />
-          <Feature
+          <SkillsWidget
             icon={<Icon as={FaGamepad} fill="blue.400" w={10} h={10} />}
             title={'Game Development'}
             text={

@@ -23,7 +23,11 @@ const ProjectSection = () => {
             key={index}
             colSpan={{
               base: 1,
-              md: index + 1 === projectCardDataArray.projectCards.length ? 2 : 1
+              md:
+                index + 1 === projectCardDataArray.projectCards.length &&
+                projectCardDataArray.projectCards.length % 2 !== 0
+                  ? 2
+                  : 1
             }}
           >
             <ProjectCard projectCardData={projectData} />

@@ -11,6 +11,7 @@ const profileData = {
   hostedProjects: true,
   // if hostedProjects is true, then add the links to the projects here
   projectCards: [
+    // add project details
     {
       imgSrc: '/images/projects/atmn.png' as string,
       projectHeading: 'Android App ' as string,
