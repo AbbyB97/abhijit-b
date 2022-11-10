@@ -37,14 +37,14 @@ const profileData = {
   // if hostedProjects is true, then add the links to the projects here
   projectCards: [
     // add project details
-    {
-      imgSrc: '/images/projects/atmn.png' as string,
-      projectHeading: 'Android App ' as string,
-      projectDetail:
-        'A simple and quick way to start using alternative Indian apps for andorid.' as string,
-      projectLink:
-        'https://play.google.com/store/apps/details?id=com.apps.atmanirbharindia.release&hl=en_US&gl=US/' as string
-    },
+    // {
+    //   imgSrc: '/images/projects/atmn.png' as string,
+    //   projectHeading: 'Android App ' as string,
+    //   projectDetail:
+    //     'A simple and quick way to start using alternative Indian apps for andorid.' as string,
+    //   projectLink:
+    //     'https://play.google.com/store/apps/details?id=com.apps.atmanirbharindia.release&hl=en_US&gl=US/' as string
+    // },
     {
       imgSrc: '/images/projects/eshop.png' as string,
       projectHeading: 'Eshop' as string,
