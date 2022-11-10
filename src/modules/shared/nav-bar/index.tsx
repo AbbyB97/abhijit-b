@@ -23,6 +23,7 @@ import {
 } from '@chakra-ui/icons'
 import { BsFillSunFill, BsMoonFill } from 'react-icons/bs'
 import { scroller } from 'react-scroll'
+import profileData from 'static/portfolioProfile'
 
 export default function Navbar() {
   const { isOpen, onToggle: onNavToggle } = useDisclosure()
@@ -72,7 +73,7 @@ export default function Navbar() {
               })
             }
           >
-            Abhijit
+            {profileData.name}
           </Text>
 
           <Flex display={{ base: 'none', md: 'flex' }} ml={10}>

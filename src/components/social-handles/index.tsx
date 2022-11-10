@@ -11,22 +11,25 @@ import {
 } from '@chakra-ui/react'
 import React, { useEffect, useState } from 'react'
 import { TwitterTimelineEmbed } from 'react-twitter-embed'
-import {
-  AiFillGithub,
-  AiFillMediumCircle,
-  AiFillTwitterCircle
-} from 'react-icons/ai'
-import { TiSocialLinkedinCircular } from 'react-icons/ti'
 import { Element } from 'react-scroll'
+import portfolioProfile from 'static/portfolioProfile'
+import { doesTwitterHandleExist } from 'helpers/common'
 
 const SocialHandles = () => {
   const { colorMode } = useColorMode()
   console.log(' dark colorMode', colorMode === 'dark')
   console.log('light colorMode', colorMode === 'light')
-  const [isTimeLineLoaded, setIsTimeLineLoaded] = useState(false)
+  const [loading, setLoading] = useState(true)
   useEffect(() => {
-    setIsTimeLineLoaded(false)
+    setLoading(true)
   }, [colorMode])
+
+  useEffect(() => {
+    // set loading to false since we dont have twitter handle
+    if (!doesTwitterHandleExist(portfolioProfile.socialHandles)) {
+      setLoading(false)
+    }
+  }, [])
 
   return (
     <Element name="Social-Section">
@@ -34,7 +37,7 @@ const SocialHandles = () => {
         <Heading textAlign="center" my={12}>
           Social Handles
         </Heading>
-        {!isTimeLineLoaded && (
+        {loading && (
           <HStack p="1rem" justify="center" align="center">
             <Spinner
               thickness="4px"
@@ -46,90 +49,72 @@ const SocialHandles = () => {
             />
           </HStack>
         )}
-        <Stack direction={{base:"column-reverse",md:'row'}} justify="center" align="center">
-          {isTimeLineLoaded && (
-            <Stack justify="center" align="center" direction={{base:"row",md:'column'}} >
-              <Box>
-                <Icon
-                  onClick={() =>
-                    window?.open('https://github.com/AbbyB97', '_blank')
-                  }
-                  _hover={{ cursor: 'pointer' }}
-                  h="2.5rem"
-                  w="2.5rem"
-                  as={AiFillGithub}
-                />
-              </Box>
-              <Box>
-                <Icon
-                  onClick={() =>
-                    window?.open(
-                      'https://www.linkedin.com/in/abhijit-b97/',
-                      '_blank'
-                    )
-                  }
-                  _hover={{ cursor: 'pointer' }}
-                  h="3.4rem"
-                  w="3.4rem"
-                  as={TiSocialLinkedinCircular}
-                />
-              </Box>
-              <Box>
-                <Icon
-                  onClick={() =>
-                    window?.open('https://medium.com/@abhijitbansode', '_blank')
-                  }
-                  _hover={{ cursor: 'pointer' }}
-                  h="3.5rem"
-                  w="2.9rem"
-                  as={AiFillMediumCircle}
-                />
-              </Box>
-              <Box>
-                <Icon
-                  onClick={() =>
-                    window?.open('https://twitter.com/b_abby97', '_blank')
-                  }
-                  _hover={{ cursor: 'pointer' }}
-                  h="3.5rem"
-                  w="2.9rem"
-                  as={AiFillTwitterCircle}
-                />
-              </Box>
+        <Stack
+          direction={{ base: 'column-reverse', md: 'row' }}
+          justify="center"
+          align="center"
+        >
+          {!loading && (
+            <Stack
+              justify="center"
+              align="center"
+              direction={{
+                base: 'row',
+                md: doesTwitterHandleExist(portfolioProfile.socialHandles)
+                  ? 'column'
+                  : 'row'
+              }}
+            >
+              {portfolioProfile.socialHandles.map((socialHandle, index) => (
+                <Box>
+                  <Icon
+                    onClick={() =>
+                      window?.open(`${socialHandle.link}`, '_blank')
+                    }
+                    _hover={{ cursor: 'pointer' }}
+                    h="2.5rem"
+                    w="2.5rem"
+                    as={socialHandle.icon}
+                  />
+                </Box>
+              ))}
             </Stack>
           )}
-          <VStack p="1rem" justify="center" align="center">
-            <Box
-              maxH="500px"
-              overflowY="scroll"
-              css={{
-                '&::-webkit-scrollbar': {
-                  width: '4px'
-                },
-                '&::-webkit-scrollbar-track': {
-                  width: '6px'
-                },
-                '&::-webkit-scrollbar-thumb': {
-                  background: 'gray',
-                  borderRadius: '24px'
-                }
-              }}
-              px="10px"
-              pt="10px"
-              bg="white"
-            >
-              <TwitterTimelineEmbed
-                sourceType="profile"
-                screenName="b_abby97"
-                options={{ height: 400, width: 300 }}
-                noScrollbar={true}
-                noFooter={true}
-                onLoad={() => setIsTimeLineLoaded(true)}
-                theme={colorMode === 'dark' ? 'dark' : 'light'}
-                key={colorMode === 'dark' ? 'dark' : 'light'}
-              />
-            </Box>
-          </VStack>
+
+          {doesTwitterHandleExist(portfolioProfile.socialHandles) && (
+            <VStack p="1rem" justify="center" align="center">
+              <Box
+                maxH="500px"
+                overflowY="scroll"
+                css={{
+                  '&::-webkit-scrollbar': {
+                    width: '4px'
+                  },
+                  '&::-webkit-scrollbar-track': {
+                    width: '6px'
+                  },
+                  '&::-webkit-scrollbar-thumb': {
+                    background: 'gray',
+                    borderRadius: '24px'
+                  }
+                }}
+                px="10px"
+                pt="10px"
+                bg="white"
+              >
+                <TwitterTimelineEmbed
+                  sourceType="profile"
+                  screenName="b_abby97"
+                  options={{ height: 400, width: 300 }}
+                  noScrollbar={true}
+                  noFooter={true}
+                  onLoad={() => setLoading(false)}
+                  theme={colorMode === 'dark' ? 'dark' : 'light'}
+                  key={colorMode === 'dark' ? 'dark' : 'light'}
+                />
+              </Box>
+            </VStack>
+          )}
         </Stack>
       </Box>
     </Element>
