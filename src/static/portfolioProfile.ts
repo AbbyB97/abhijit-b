@@ -29,7 +29,7 @@ const profileData = {
   header: {
     lineOne: 'A Self Taught ',
     lineTwo: 'Developer',
-    favouriteQuote: '""Pleasure in the job puts perfection in the work"',
+    favouriteQuote: '"Pleasure in the job puts perfection in the work"',
     favouriteQuoteAuthor: 'Aristotle'
   },
   // make it true if the projects are hosted online, (You can also add github repository link)
