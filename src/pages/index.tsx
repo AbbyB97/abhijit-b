@@ -9,7 +9,7 @@ const Home: NextPage = () => {
       <Head>
         <title>{profileData.name}</title>
         <meta property="og:title" content={`${profileData.name}`} />
-        <meta name="description" content={`${profileData.name}`} />
+        <meta name="description" content={`${profileData.header.lineOne} ${profileData.header.lineTwo}`} />
         <meta
           property="og:description"
           content={`${profileData.header.lineOne} ${profileData.header.lineTwo}`}
