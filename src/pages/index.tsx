@@ -15,7 +15,7 @@ const Home: NextPage = () => {
           content={`${profileData.header.lineOne} ${profileData.header.lineTwo}`}
         />
         <meta property="og:type" content="website" />
-        <meta property="og:image" content="/images/avatar_ab.jpeg" />
+        <meta property="og:image" content="/images/avatar_ab_mini.jpg" />
         <meta property="og:url" content="https://abhijit-b.vercel.app/" />
       </Head>
       <HomeModule />
