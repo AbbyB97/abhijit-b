@@ -80,7 +80,7 @@ export default function SkillsSection() {
             icon={<Icon as={FaGamepad} fill="blue.400" w={10} h={10} />}
             title={'Game Development'}
             text={
-              'I also make games as a hobby. I have experience in making games with Unity & Godot.'
+              'I also make games as a hobby. I have experience in game engines like Unity & Godot.'
             }
           />
         </SimpleGrid>
