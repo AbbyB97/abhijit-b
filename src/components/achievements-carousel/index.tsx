@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react"
 import {
   Box,
   IconButton,
@@ -10,12 +10,12 @@ import {
   Image,
   HStack,
   Icon
-} from '@chakra-ui/react'
+} from "@chakra-ui/react"
 // Here we have used react-icons package for the icons
-import { BiLeftArrowAlt, BiRightArrowAlt } from 'react-icons/bi'
+import { BiLeftArrowAlt, BiRightArrowAlt } from "react-icons/bi"
 // And react-slick as our Carousel Lib
-import Slider from 'react-slick'
-import { Element } from 'react-scroll'
+import Slider from "react-slick"
+import { Element } from "react-scroll"
 
 // Settings for the slider
 const settings = {
@@ -37,47 +37,47 @@ export default function AchievementsCarousel() {
 
   // These are the breakpoints which changes the position of the
   // buttons as the screen size changes
-  const top = useBreakpointValue({ base: '90%', md: '50%' })
-  const side = useBreakpointValue({ base: '30%', md: '40px' })
+  const top = useBreakpointValue({ base: "90%", md: "50%" })
+  const side = useBreakpointValue({ base: "30%", md: "40px" })
 
   // This list contains all the data for carousels
   // This can be static or loaded from a server
   const cards = [
     {
-      title: 'Project Competition Winner',
+      title: "Project Competition Winner",
       text: "The project board is an exclusive resource for contract work. It's perfect for freelancers, agencies, and moonlighters.",
-      image: '/images/achievements/1.jpg'
+      image: "/images/achievements/1.jpg"
     },
 
     {
-      title: 'Smart India Hackathon Finalist',
+      title: "Smart India Hackathon Finalist",
       text: "The project board is an exclusive resource for contract work. It's perfect for freelancers, agencies, and moonlighters.",
-      image: '/images/achievements/3.jpg'
+      image: "/images/achievements/3.jpg"
     },
     {
-      title: 'Project Competition Winner',
+      title: "Project Competition Winner",
       text: "The project board is an exclusive resource for contract work. It's perfect for freelancers, agencies, and moonlighters.",
-      image: '/images/achievements/2.jpg'
+      image: "/images/achievements/2.jpg"
     },
     {
-      title: 'GDG organizer',
+      title: "GDG organizer",
       text: "The project board is an exclusive resource for contract work. It's perfect for freelancers, agencies, and moonlighters.",
-      image: '/images/achievements/4.jpeg'
+      image: "/images/achievements/4.jpeg"
     },
     {
-      title: 'TechNgage Hackathon',
+      title: "TechNgage Hackathon",
       text: "The project board is an exclusive resource for contract work. It's perfect for freelancers, agencies, and moonlighters.",
-      image: '/images/achievements/6.jpg'
+      image: "/images/achievements/6.jpg"
     }
   ]
 
   return (
     <Element name="Achievements-Section">
       <Box
-        position={'relative'}
-        height={'550px'}
-        width={'full'}
-        overflow={'hidden'}
+        position={"relative"}
+        height={"550px"}
+        width={"full"}
+        overflow={"hidden"}
       >
         <Heading textAlign="center" my={12}>
           Achievements
@@ -105,14 +105,14 @@ export default function AchievementsCarousel() {
               <Heading
                 mb="10px"
                 textAlign="center"
-                fontSize={{ base: '21px', lg: '24px' }}
+                fontSize={{ base: "21px", lg: "24px" }}
                 color="gray.400"
                 fontWeight={500}
               >
                 {card.title}
               </Heading>
               <HStack
-                h={{ base: '22.5rem', md: 'auto' }}
+                h={{ base: "22.5rem", md: "auto" }}
                 justify="center"
                 align="center"
               >
@@ -122,15 +122,15 @@ export default function AchievementsCarousel() {
                   position="absolute"
                   left={side}
                   top={top}
-                  transform={'translate(0%, -50%)'}
+                  transform={"translate(0%, -50%)"}
                   zIndex={2}
                   onClick={() => slider?.slickPrev()}
-                  _hover={{ bg: 'none' }}
-                  _active={{ bg: 'none' }}
+                  _hover={{ bg: "none" }}
+                  _active={{ bg: "none" }}
                 >
                   <Icon
                     as={BiLeftArrowAlt}
-                    color={{ base: 'white',md:'gray.500' }}
+                    color={{ base: "white", md: "gray.500" }}
                     size="30px"
                   />
                 </IconButton>
@@ -141,15 +141,15 @@ export default function AchievementsCarousel() {
                   position="absolute"
                   right={side}
                   top={top}
-                  transform={'translate(0%, -50%)'}
+                  transform={"translate(0%, -50%)"}
                   zIndex={2}
                   onClick={() => slider?.slickNext()}
-                  _hover={{ bg: 'none' }}
-                  _active={{ bg: 'none' }}
+                  _hover={{ bg: "none" }}
+                  _active={{ bg: "none" }}
                 >
                   <Icon
                     as={BiRightArrowAlt}
-                    color={{ base: 'white',md:'gray.500' }}
+                    color={{ base: "white", md: "gray.500" }}
                     size="30px"
                   />
                 </IconButton>

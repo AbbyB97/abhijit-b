@@ -2,7 +2,7 @@
   "extends": "next/core-web-vitals",
   "rules": {
     "semi": ["error", "never"],
-    "quotes": ["error", "single"],
-    "trailingComma": "none"
+    "quotes": ["error", "double"],
+    "trailingComma": 0
   }
 }
