@@ -1,7 +1,7 @@
-import type { NextPage } from 'next'
-import HomeModule from 'modules/home'
-import Head from 'next/head'
-import profileData from 'static/portfolioProfile'
+import type { NextPage } from "next"
+import HomeModule from "modules/home"
+import Head from "next/head"
+import profileData from "static/portfolioProfile"
 
 const Home: NextPage = () => {
   return (
@@ -9,7 +9,10 @@ const Home: NextPage = () => {
       <Head>
         <title>{profileData.name}</title>
         <meta property="og:title" content={`${profileData.name}`} />
-        <meta name="description" content={`${profileData.header.lineOne} ${profileData.header.lineTwo}`} />
+        <meta
+          name="description"
+          content={`${profileData.header.lineOne} ${profileData.header.lineTwo}`}
+        />
         <meta
           property="og:description"
           content={`${profileData.header.lineOne} ${profileData.header.lineTwo}`}

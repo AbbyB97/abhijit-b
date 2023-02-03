@@ -1,5 +1,5 @@
-import { Flex, chakra, Icon } from '@chakra-ui/react'
-import React from 'react'
+import { Flex, chakra, Icon } from "@chakra-ui/react"
+import React from "react"
 
 const Footer = () => {
   return (
@@ -8,8 +8,8 @@ const Footer = () => {
         w="full"
         as="footer"
         flexDir={{
-          base: 'column',
-          sm: 'row'
+          base: "column",
+          sm: "row"
         }}
         align="center"
         justify="center"
@@ -17,17 +17,17 @@ const Footer = () => {
         py="4"
         bg="white"
         _dark={{
-          bg: 'gray.800'
+          bg: "gray.800"
         }}
       >
         <chakra.p
           py={{
-            base: '2',
-            sm: '0'
+            base: "2",
+            sm: "0"
           }}
           color="gray.800"
           _dark={{
-            color: 'white'
+            color: "white"
           }}
         >
           ©Copyright. All rights reserved
