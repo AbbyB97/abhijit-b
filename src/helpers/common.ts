@@ -1,7 +1,7 @@
-import { IconType } from 'react-icons/lib'
+import { IconType } from "react-icons/lib"
 
 export const getTwitterHandleFromLink = (link: string) => {
-  return link.split('/')
+  return link.split("/")
 }
 
 export const doesTwitterHandleExist = (
@@ -11,6 +11,6 @@ export const doesTwitterHandleExist = (
   }[]
 ) => {
   return socialHandlesArray.some((socialHandle) =>
-    socialHandle.link.includes('twitter')
+    socialHandle.link.includes("twitter")
   )
 }

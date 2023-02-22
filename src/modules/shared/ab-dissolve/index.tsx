@@ -1,5 +1,5 @@
-import { Fade } from '@chakra-ui/react'
-import { DissolveProps } from './types'
+import { Fade } from "@chakra-ui/react"
+import { DissolveProps } from "./types"
 
 const ABDissolve = ({ children, dissolveKey, duration = 1 }: DissolveProps) => {
   return (
