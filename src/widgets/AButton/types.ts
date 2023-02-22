@@ -1,4 +1,3 @@
-
 export interface AButtonProps {
-    buttontype: "primary" | "secondary";
+  buttontype: "primary" | "secondary"
 }

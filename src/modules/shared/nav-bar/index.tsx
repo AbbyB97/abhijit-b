@@ -14,61 +14,61 @@ import {
   useBreakpointValue,
   useDisclosure,
   useColorMode
-} from '@chakra-ui/react'
+} from "@chakra-ui/react"
 import {
   HamburgerIcon,
   CloseIcon,
   ChevronDownIcon,
   ChevronRightIcon
-} from '@chakra-ui/icons'
-import { BsFillSunFill, BsMoonFill } from 'react-icons/bs'
-import { scroller } from 'react-scroll'
-import profileData from 'static/portfolioProfile'
+} from "@chakra-ui/icons"
+import { BsFillSunFill, BsMoonFill } from "react-icons/bs"
+import { scroller } from "react-scroll"
+import profileData from "static/portfolioProfile"
 
 export default function Navbar() {
   const { isOpen, onToggle: onNavToggle } = useDisclosure()
   const { colorMode, toggleColorMode } = useColorMode()
 
   return (
-    <Box w={{ base: '91%', md: '95%' }} maxW="5xl" pos="fixed" zIndex={11}>
+    <Box w={{ base: "91%", md: "95%" }} maxW="5xl" pos="fixed" zIndex={11}>
       <Flex
-        bg={useColorModeValue('white', 'gray.800')}
-        color={useColorModeValue('gray.600', 'white')}
-        minH={'60px'}
+        bg={useColorModeValue("white", "gray.800")}
+        color={useColorModeValue("gray.600", "white")}
+        minH={"60px"}
         py={{ base: 2 }}
         px={{ base: 4 }}
         borderBottom={1}
-        borderStyle={'solid'}
-        borderColor={useColorModeValue('gray.200', 'gray.900')}
-        align={'center'}
+        borderStyle={"solid"}
+        borderColor={useColorModeValue("gray.200", "gray.900")}
+        align={"center"}
       >
         <Flex
-          flex={{ base: 1, md: 'auto' }}
+          flex={{ base: 1, md: "auto" }}
           ml={{ base: -2 }}
-          display={{ base: 'flex', md: 'none' }}
+          display={{ base: "flex", md: "none" }}
         >
           <IconButton
             onClick={onNavToggle}
             icon={
               isOpen ? <CloseIcon w={3} h={3} /> : <HamburgerIcon w={5} h={5} />
             }
-            variant={'ghost'}
-            aria-label={'Toggle Navigation'}
+            variant={"ghost"}
+            aria-label={"Toggle Navigation"}
           />
         </Flex>
-        <Flex flex={{ base: 1 }} justify={{ base: 'center', md: 'start' }}>
+        <Flex flex={{ base: 1 }} justify={{ base: "center", md: "start" }}>
           <Text
-            textAlign={useBreakpointValue({ base: 'center', md: 'left' })}
-            fontFamily={'heading'}
-            _hover={{ cursor: 'pointer' }}
-            color={useColorModeValue('gray.800', 'white')}
+            textAlign={useBreakpointValue({ base: "center", md: "left" })}
+            fontFamily={"heading"}
+            _hover={{ cursor: "pointer" }}
+            color={useColorModeValue("gray.800", "white")}
             onClick={() =>
-              scroller.scrollTo('Hero-Section', {
+              scroller.scrollTo("Hero-Section", {
                 duration: 750,
                 delay: 50,
                 // smooth: true,
                 // containerId: 'ContainerElementID',
-                smooth: 'easeInOutQuint',
+                smooth: "easeInOutQuint",
                 offset: -65 // Scrolls to element + 50 pixels down the page
               })
             }
@@ -76,23 +76,23 @@ export default function Navbar() {
             {profileData.name}
           </Text>
 
-          <Flex display={{ base: 'none', md: 'flex' }} ml={10}>
+          <Flex display={{ base: "none", md: "flex" }} ml={10}>
             <DesktopNav />
           </Flex>
         </Flex>
 
         <Stack
           flex={{ base: 1, md: 0 }}
-          justify={'flex-end'}
-          direction={'row'}
+          justify={"flex-end"}
+          direction={"row"}
           spacing={6}
         >
           <IconButton
-            variant={'ghost'}
-            aria-label={'Toggle Theme'}
+            variant={"ghost"}
+            aria-label={"Toggle Theme"}
             onClick={toggleColorMode}
           >
-            {colorMode === 'light' ? <BsMoonFill /> : <BsFillSunFill />}
+            {colorMode === "light" ? <BsMoonFill /> : <BsFillSunFill />}
           </IconButton>
         </Stack>
       </Flex>
@@ -105,24 +105,24 @@ export default function Navbar() {
 }
 
 const DesktopNav = () => {
-  const linkColor = useColorModeValue('gray.600', 'gray.200')
-  const linkHoverColor = useColorModeValue('gray.800', 'white')
-  const popoverContentBgColor = useColorModeValue('white', 'gray.800')
+  const linkColor = useColorModeValue("gray.600", "gray.200")
+  const linkHoverColor = useColorModeValue("gray.800", "white")
+  const popoverContentBgColor = useColorModeValue("white", "gray.800")
 
   return (
-    <Stack direction={'row'} spacing={4}>
+    <Stack direction={"row"} spacing={4}>
       {NAV_ITEMS.map((navItem) => (
         <Box key={navItem.label}>
-          <Popover trigger={'hover'} placement={'bottom-start'}>
+          <Popover trigger={"hover"} placement={"bottom-start"}>
             <PopoverTrigger>
               <Link
                 p={2}
                 // href={navItem.href ?? '#'}
-                fontSize={'sm'}
+                fontSize={"sm"}
                 fontWeight={500}
                 color={linkColor}
                 _hover={{
-                  textDecoration: 'none',
+                  textDecoration: "none",
                   color: linkHoverColor
                 }}
                 onClick={() =>
@@ -131,7 +131,7 @@ const DesktopNav = () => {
                     delay: 50,
                     // smooth: true,
                     // containerId: 'ContainerElementID',
-                    smooth: 'easeInOutQuint',
+                    smooth: "easeInOutQuint",
                     offset: -65 // Scrolls to element + 50 pixels down the page
                   })
                 }
@@ -149,9 +149,9 @@ const DesktopNav = () => {
 const MobileNav = ({ onNavToggle }: { onNavToggle: () => void }) => {
   return (
     <Stack
-      bg={useColorModeValue('white', 'gray.800')}
+      bg={useColorModeValue("white", "gray.800")}
       p={4}
-      display={{ md: 'none' }}
+      display={{ md: "none" }}
       w="97.5%"
       position="absolute"
       zIndex={10}
@@ -181,22 +181,22 @@ const MobileNavItem = ({
         py={2}
         as={Link}
         // href={href ?? '#'}
-        justify={'space-between'}
-        align={'center'}
+        justify={"space-between"}
+        align={"center"}
         _hover={{
-          textDecoration: 'none'
+          textDecoration: "none"
         }}
       >
         <Text
           fontWeight={600}
-          color={useColorModeValue('gray.600', 'gray.200')}
+          color={useColorModeValue("gray.600", "gray.200")}
           onClick={() => {
             scroller.scrollTo(sectionName, {
               duration: 750,
               delay: 50,
               // smooth: true,
               // containerId: 'ContainerElementID',
-              smooth: 'easeInOutQuint',
+              smooth: "easeInOutQuint",
               offset: -65 // Scrolls to element + 50 pixels down the page
             })
             onNavToggle()
@@ -218,19 +218,19 @@ interface NavItem {
 
 const NAV_ITEMS: Array<NavItem> = [
   {
-    label: 'Projects',
-    sectionName: 'Projects-Section'
+    label: "Projects",
+    sectionName: "Projects-Section"
   },
   {
-    label: 'Skills',
-    sectionName: 'Skills-Section'
+    label: "Skills",
+    sectionName: "Skills-Section"
   },
   {
-    label: 'Achievements',
-    sectionName: 'Achievements-Section'
+    label: "Achievements",
+    sectionName: "Achievements-Section"
   },
   {
-    label: 'Social',
-    sectionName: 'Social-Section'
+    label: "Social",
+    sectionName: "Social-Section"
   }
 ]

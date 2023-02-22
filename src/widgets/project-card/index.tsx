@@ -9,8 +9,8 @@ import {
   Image,
   Flex,
   Button
-} from '@chakra-ui/react'
-import { ProjectCardDataType } from './types'
+} from "@chakra-ui/react"
+import { ProjectCardDataType } from "./types"
 
 export default function ProjectCard({
   projectCardData
@@ -22,7 +22,7 @@ export default function ProjectCard({
       borderRadius="10px"
       bg="gray.100"
       _dark={{
-        bg: 'blue.800'
+        bg: "blue.800"
       }}
       p={{ base: 3, md: 50 }}
       w="full"
@@ -35,7 +35,7 @@ export default function ProjectCard({
         mx="auto"
         bg="white"
         _dark={{
-          bg: 'gray.800'
+          bg: "gray.800"
         }}
         shadow="lg"
         rounded="lg"
@@ -47,7 +47,7 @@ export default function ProjectCard({
           <chakra.h1
             color="gray.800"
             _dark={{
-              color: 'white'
+              color: "white"
             }}
             fontWeight="bold"
             fontSize="3xl"
@@ -62,7 +62,7 @@ export default function ProjectCard({
             textAlign="center"
             color="gray.600"
             _dark={{
-              color: 'gray.400'
+              color: "gray.400"
             }}
           >
             {projectCardData.projectDetail}
@@ -96,12 +96,12 @@ export default function ProjectCard({
               rounded="lg"
               textTransform="uppercase"
               _hover={{
-                bg: 'gray.200'
+                bg: "gray.200"
               }}
               _focus={{
-                bg: 'gray.400'
+                bg: "gray.400"
               }}
-              onClick={() => window.open(projectCardData.projectLink, '_blank')}
+              onClick={() => window.open(projectCardData.projectLink, "_blank")}
             >
               View Project
             </Button>
