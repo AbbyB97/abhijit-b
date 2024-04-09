@@ -10,10 +10,15 @@ import {
   VStack
 } from "@chakra-ui/react"
 import React, { useEffect, useState } from "react"
-import { TwitterTimelineEmbed } from "react-twitter-embed"
+import {
+  TwitterFollowButton,
+  TwitterTimelineEmbed,
+  TwitterTweetEmbed
+} from "react-twitter-embed"
 import { Element } from "react-scroll"
 import portfolioProfile from "static/portfolioProfile"
 import { doesTwitterHandleExist } from "helpers/common"
+import { XEmbed } from "react-social-media-embed"
 
 const SocialHandles = () => {
   const { colorMode } = useColorMode()
@@ -102,14 +107,10 @@ const SocialHandles = () => {
                 pt="10px"
                 bg="white"
               >
-                <TwitterTimelineEmbed
-                  sourceType="profile"
-                  screenName="b_abby97"
+                <TwitterTweetEmbed
+                  tweetId="1699969647423193265"
                   options={{ height: 400, width: 300 }}
-                  noScrollbar={true}
-                  noFooter={true}
                   onLoad={() => setLoading(false)}
-                  theme={colorMode === "dark" ? "dark" : "light"}
                   key={colorMode === "dark" ? "dark" : "light"}
                 />
               </Box>
