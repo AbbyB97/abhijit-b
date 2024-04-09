@@ -18,7 +18,6 @@ import {
 import { Element } from "react-scroll"
 import portfolioProfile from "static/portfolioProfile"
 import { doesTwitterHandleExist } from "helpers/common"
-import { XEmbed } from "react-social-media-embed"
 
 const SocialHandles = () => {
   const { colorMode } = useColorMode()
