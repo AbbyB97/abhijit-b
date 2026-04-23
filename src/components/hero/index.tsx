@@ -42,7 +42,7 @@ export default function HeroWidget() {
             }}
             buttontype="primary"
           >
-            My Projects
+            Projects
           </AButton>
           <AButton
             buttontype="secondary"
