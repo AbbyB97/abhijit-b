@@ -7,16 +7,10 @@ const Home: NextPage = () => {
   return (
     <>
       <Head>
-        <title>{profileData.name}</title>
-        <meta property="og:title" content={`${profileData.name}`} />
-        <meta
-          name="description"
-          content={`${profileData.header.lineOne} ${profileData.header.lineTwo}`}
-        />
-        <meta
-          property="og:description"
-          content={`${profileData.header.lineOne} ${profileData.header.lineTwo}`}
-        />
+        <title>{`${profileData.name} | ${profileData.title}`}</title>
+        <meta property="og:title" content={`${profileData.name} | ${profileData.title}`} />
+        <meta name="description" content={profileData.subtitle} />
+        <meta property="og:description" content={profileData.about} />
         <meta property="og:type" content="website" />
         <meta property="og:image" content="/images/avatar_ab_mini.jpg" />
         <meta property="og:url" content="https://abhijit-b.vercel.app/" />

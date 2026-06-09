@@ -1,26 +1,19 @@
 import {
   Box,
-  Flex,
-  Text,
-  IconButton,
-  Stack,
   Collapse,
-  Icon,
+  Flex,
+  IconButton,
   Link,
   Popover,
   PopoverTrigger,
-  PopoverContent,
-  useColorModeValue,
+  Stack,
+  Text,
   useBreakpointValue,
-  useDisclosure,
-  useColorMode
+  useColorMode,
+  useColorModeValue,
+  useDisclosure
 } from "@chakra-ui/react"
-import {
-  HamburgerIcon,
-  CloseIcon,
-  ChevronDownIcon,
-  ChevronRightIcon
-} from "@chakra-ui/icons"
+import { CloseIcon, HamburgerIcon } from "@chakra-ui/icons"
 import { BsFillSunFill, BsMoonFill } from "react-icons/bs"
 import { scroller } from "react-scroll"
 import profileData from "static/portfolioProfile"
@@ -32,15 +25,16 @@ export default function Navbar() {
   return (
     <Box w={{ base: "91%", md: "95%" }} maxW="5xl" pos="fixed" zIndex={11}>
       <Flex
-        bg={useColorModeValue("white", "gray.800")}
+        bg={useColorModeValue("whiteAlpha.900", "gray.900")}
+        backdropFilter="blur(10px)"
         color={useColorModeValue("gray.600", "white")}
-        minH={"60px"}
+        minH="60px"
         py={{ base: 2 }}
         px={{ base: 4 }}
         borderBottom={1}
-        borderStyle={"solid"}
-        borderColor={useColorModeValue("gray.200", "gray.900")}
-        align={"center"}
+        borderStyle="solid"
+        borderColor={useColorModeValue("gray.200", "whiteAlpha.200")}
+        align="center"
       >
         <Flex
           flex={{ base: 1, md: "auto" }}
@@ -49,27 +43,26 @@ export default function Navbar() {
         >
           <IconButton
             onClick={onNavToggle}
-            icon={
-              isOpen ? <CloseIcon w={3} h={3} /> : <HamburgerIcon w={5} h={5} />
-            }
-            variant={"ghost"}
-            aria-label={"Toggle Navigation"}
+            icon={isOpen ? <CloseIcon w={3} h={3} /> : <HamburgerIcon w={5} h={5} />}
+            variant="ghost"
+            aria-label="Toggle Navigation"
           />
         </Flex>
         <Flex flex={{ base: 1 }} justify={{ base: "center", md: "start" }}>
           <Text
             textAlign={useBreakpointValue({ base: "center", md: "left" })}
-            fontFamily={"heading"}
+            fontFamily="heading"
+            fontWeight={700}
+            letterSpacing="-0.02em"
+            fontSize="sm"
             _hover={{ cursor: "pointer" }}
             color={useColorModeValue("gray.800", "white")}
             onClick={() =>
               scroller.scrollTo("Hero-Section", {
-                duration: 750,
-                delay: 50,
-                // smooth: true,
-                // containerId: 'ContainerElementID',
+                duration: 600,
+                delay: 0,
                 smooth: "easeInOutQuint",
-                offset: -65 // Scrolls to element + 50 pixels down the page
+                offset: -72
               })
             }
           >
@@ -81,17 +74,8 @@ export default function Navbar() {
           </Flex>
         </Flex>
 
-        <Stack
-          flex={{ base: 1, md: 0 }}
-          justify={"flex-end"}
-          direction={"row"}
-          spacing={6}
-        >
-          <IconButton
-            variant={"ghost"}
-            aria-label={"Toggle Theme"}
-            onClick={toggleColorMode}
-          >
+        <Stack flex={{ base: 1, md: 0 }} justify="flex-end" direction="row" spacing={4}>
+          <IconButton variant="ghost" aria-label="Toggle Theme" onClick={toggleColorMode}>
             {colorMode === "light" ? <BsMoonFill /> : <BsFillSunFill />}
           </IconButton>
         </Stack>
@@ -105,34 +89,29 @@ export default function Navbar() {
 }
 
 const DesktopNav = () => {
-  const linkColor = useColorModeValue("gray.600", "gray.200")
-  const linkHoverColor = useColorModeValue("gray.800", "white")
-  const popoverContentBgColor = useColorModeValue("white", "gray.800")
+  const linkColor = useColorModeValue("gray.600", "gray.300")
+  const linkHoverColor = useColorModeValue("gray.900", "white")
 
   return (
-    <Stack direction={"row"} spacing={4}>
+    <Stack direction="row" spacing={1}>
       {NAV_ITEMS.map((navItem) => (
         <Box key={navItem.label}>
-          <Popover trigger={"hover"} placement={"bottom-start"}>
+          <Popover trigger="hover" placement="bottom-start">
             <PopoverTrigger>
               <Link
-                p={2}
-                // href={navItem.href ?? '#'}
-                fontSize={"sm"}
+                px={3}
+                py={2}
+                fontSize="sm"
                 fontWeight={500}
                 color={linkColor}
-                _hover={{
-                  textDecoration: "none",
-                  color: linkHoverColor
-                }}
+                borderRadius="md"
+                _hover={{ textDecoration: "none", color: linkHoverColor }}
                 onClick={() =>
                   scroller.scrollTo(navItem.sectionName, {
-                    duration: 750,
-                    delay: 50,
-                    // smooth: true,
-                    // containerId: 'ContainerElementID',
+                    duration: 600,
+                    delay: 0,
                     smooth: "easeInOutQuint",
-                    offset: -65 // Scrolls to element + 50 pixels down the page
+                    offset: -72
                   })
                 }
               >
@@ -149,19 +128,18 @@ const DesktopNav = () => {
 const MobileNav = ({ onNavToggle }: { onNavToggle: () => void }) => {
   return (
     <Stack
-      bg={useColorModeValue("white", "gray.800")}
+      bg={useColorModeValue("whiteAlpha.900", "gray.900")}
       p={4}
       display={{ md: "none" }}
       w="97.5%"
       position="absolute"
       zIndex={10}
+      borderBottom={1}
+      borderStyle="solid"
+      borderColor={useColorModeValue("gray.200", "whiteAlpha.200")}
     >
       {NAV_ITEMS.map((navItem) => (
-        <MobileNavItem
-          onNavToggle={onNavToggle}
-          key={navItem.label}
-          {...navItem}
-        />
+        <MobileNavItem onNavToggle={onNavToggle} key={navItem.label} {...navItem} />
       ))}
     </Stack>
   )
@@ -169,35 +147,22 @@ const MobileNav = ({ onNavToggle }: { onNavToggle: () => void }) => {
 
 const MobileNavItem = ({
   label,
-  href,
   sectionName,
   onNavToggle
 }: NavItem & { onNavToggle: () => void }) => {
-  const { isOpen, onToggle, onClose } = useDisclosure()
-
   return (
-    <Stack spacing={4} onClick={onToggle}>
-      <Flex
-        py={2}
-        as={Link}
-        // href={href ?? '#'}
-        justify={"space-between"}
-        align={"center"}
-        _hover={{
-          textDecoration: "none"
-        }}
-      >
+    <Stack spacing={4}>
+      <Flex py={2} as={Link} justify="space-between" align="center" _hover={{ textDecoration: "none" }}>
         <Text
-          fontWeight={600}
-          color={useColorModeValue("gray.600", "gray.200")}
+          fontWeight={500}
+          fontSize="sm"
+          color={useColorModeValue("gray.600", "gray.300")}
           onClick={() => {
             scroller.scrollTo(sectionName, {
-              duration: 750,
-              delay: 50,
-              // smooth: true,
-              // containerId: 'ContainerElementID',
+              duration: 600,
+              delay: 0,
               smooth: "easeInOutQuint",
-              offset: -65 // Scrolls to element + 50 pixels down the page
+              offset: -72
             })
             onNavToggle()
           }}
@@ -211,26 +176,13 @@ const MobileNavItem = ({
 
 interface NavItem {
   label: string
-  subLabel?: string
-  href?: string
   sectionName: string
 }
 
 const NAV_ITEMS: Array<NavItem> = [
-  {
-    label: "Projects",
-    sectionName: "Projects-Section"
-  },
-  {
-    label: "Skills",
-    sectionName: "Skills-Section"
-  },
-  {
-    label: "Achievements",
-    sectionName: "Achievements-Section"
-  },
-  {
-    label: "Social",
-    sectionName: "Social-Section"
-  }
+  { label: "About", sectionName: "About-Section" },
+  { label: "Featured Work", sectionName: "Projects-Section" },
+  { label: "Experience", sectionName: "Experience-Section" },
+  { label: "Skills", sectionName: "Skills-Section" },
+  { label: "Contact", sectionName: "Contact-Section" }
 ]

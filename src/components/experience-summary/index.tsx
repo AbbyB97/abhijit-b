@@ -2,7 +2,7 @@ import {
   Box,
   Flex,
   Heading,
-  SimpleGrid,
+  Stack,
   Tag,
   TagLabel,
   Text,
@@ -13,47 +13,55 @@ import {
 import { Element } from "react-scroll"
 import profileData from "static/portfolioProfile"
 
-const ProjectSection = () => {
+const ExperienceSummary = () => {
   const cardBorder = useColorModeValue("gray.200", "whiteAlpha.200")
   const cardBg = useColorModeValue("white", "whiteAlpha.50")
-  const hoverBorder = useColorModeValue("gray.400", "whiteAlpha.400")
+  const periodText = useColorModeValue("gray.500", "gray.400")
+  const roleText = useColorModeValue("gray.500", "gray.400")
   const bodyText = useColorModeValue("gray.600", "gray.300")
   const tagBg = useColorModeValue("gray.100", "whiteAlpha.150")
   const tagColor = useColorModeValue("gray.600", "gray.300")
 
   return (
-    <Element name="Projects-Section">
+    <Element name="Experience-Section">
       <Box py={{ base: 10, md: 14 }}>
         <Heading size="lg" mb={8} letterSpacing="-0.02em">
-          Featured Work
+          Experience
         </Heading>
-        <SimpleGrid columns={{ base: 1, md: 2 }} spacing={5}>
-          {profileData.featuredWork.map((work) => (
-            <Flex
-              key={work.title}
-              direction="column"
+        <Stack spacing={4}>
+          {profileData.experience.map((item) => (
+            <Box
+              key={`${item.company}-${item.period}`}
               p={{ base: 5, md: 6 }}
               rounded="xl"
               borderWidth="1px"
               borderColor={cardBorder}
               bg={cardBg}
-              transition="border-color 0.15s ease"
-              _hover={{ borderColor: hoverBorder }}
             >
-              <Heading size="sm" mb={3} letterSpacing="-0.01em">
-                {work.title}
-              </Heading>
-              <Text
-                color={bodyText}
-                fontSize="sm"
-                lineHeight="1.75"
-                mb={5}
-                flex={1}
+              <Flex
+                justify="space-between"
+                align="flex-start"
+                mb={3}
+                wrap="wrap"
+                gap={2}
               >
-                {work.description}
+                <Box>
+                  <Heading size="sm" letterSpacing="-0.01em">
+                    {item.company}
+                  </Heading>
+                  <Text fontSize="sm" color={roleText} fontWeight={500} mt={0.5}>
+                    {item.title}
+                  </Text>
+                </Box>
+                <Text fontSize="sm" color={periodText} fontWeight={500} flexShrink={0}>
+                  {item.period}
+                </Text>
+              </Flex>
+              <Text color={bodyText} fontSize="sm" lineHeight="1.75" mb={4}>
+                {item.description}
               </Text>
-              <Wrap spacing={2} mt="auto">
-                {work.tags.map((tag) => (
+              <Wrap spacing={2}>
+                {item.highlights.map((tag) => (
                   <WrapItem key={tag}>
                     <Tag
                       size="sm"
@@ -68,12 +76,12 @@ const ProjectSection = () => {
                   </WrapItem>
                 ))}
               </Wrap>
-            </Flex>
+            </Box>
           ))}
-        </SimpleGrid>
+        </Stack>
       </Box>
     </Element>
   )
 }
 
-export default ProjectSection
+export default ExperienceSummary
