@@ -1,19 +1,19 @@
 import {
   Box,
-  Flex,
-  Text,
-  IconButton,
-  Stack,
   Collapse,
+  Flex,
+  IconButton,
   Link,
   Popover,
   PopoverTrigger,
-  useColorModeValue,
+  Stack,
+  Text,
   useBreakpointValue,
-  useDisclosure,
-  useColorMode
+  useColorMode,
+  useColorModeValue,
+  useDisclosure
 } from "@chakra-ui/react"
-import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons"
+import { CloseIcon, HamburgerIcon } from "@chakra-ui/icons"
 import { BsFillSunFill, BsMoonFill } from "react-icons/bs"
 import { scroller } from "react-scroll"
 import profileData from "static/portfolioProfile"
@@ -26,14 +26,14 @@ export default function Navbar() {
     <Box w={{ base: "91%", md: "95%" }} maxW="5xl" pos="fixed" zIndex={11}>
       <Flex
         bg={useColorModeValue("whiteAlpha.900", "gray.900")}
-        backdropFilter="blur(8px)"
+        backdropFilter="blur(10px)"
         color={useColorModeValue("gray.600", "white")}
         minH="60px"
         py={{ base: 2 }}
         px={{ base: 4 }}
         borderBottom={1}
         borderStyle="solid"
-        borderColor={useColorModeValue("gray.200", "whiteAlpha.300")}
+        borderColor={useColorModeValue("gray.200", "whiteAlpha.200")}
         align="center"
       >
         <Flex
@@ -53,6 +53,8 @@ export default function Navbar() {
             textAlign={useBreakpointValue({ base: "center", md: "left" })}
             fontFamily="heading"
             fontWeight={700}
+            letterSpacing="-0.02em"
+            fontSize="sm"
             _hover={{ cursor: "pointer" }}
             color={useColorModeValue("gray.800", "white")}
             onClick={() =>
@@ -87,20 +89,22 @@ export default function Navbar() {
 }
 
 const DesktopNav = () => {
-  const linkColor = useColorModeValue("gray.600", "gray.200")
+  const linkColor = useColorModeValue("gray.600", "gray.300")
   const linkHoverColor = useColorModeValue("gray.900", "white")
 
   return (
-    <Stack direction="row" spacing={4}>
+    <Stack direction="row" spacing={1}>
       {NAV_ITEMS.map((navItem) => (
         <Box key={navItem.label}>
           <Popover trigger="hover" placement="bottom-start">
             <PopoverTrigger>
               <Link
-                p={2}
+                px={3}
+                py={2}
                 fontSize="sm"
                 fontWeight={500}
                 color={linkColor}
+                borderRadius="md"
                 _hover={{ textDecoration: "none", color: linkHoverColor }}
                 onClick={() =>
                   scroller.scrollTo(navItem.sectionName, {
@@ -130,6 +134,9 @@ const MobileNav = ({ onNavToggle }: { onNavToggle: () => void }) => {
       w="97.5%"
       position="absolute"
       zIndex={10}
+      borderBottom={1}
+      borderStyle="solid"
+      borderColor={useColorModeValue("gray.200", "whiteAlpha.200")}
     >
       {NAV_ITEMS.map((navItem) => (
         <MobileNavItem onNavToggle={onNavToggle} key={navItem.label} {...navItem} />
@@ -147,8 +154,9 @@ const MobileNavItem = ({
     <Stack spacing={4}>
       <Flex py={2} as={Link} justify="space-between" align="center" _hover={{ textDecoration: "none" }}>
         <Text
-          fontWeight={600}
-          color={useColorModeValue("gray.600", "gray.200")}
+          fontWeight={500}
+          fontSize="sm"
+          color={useColorModeValue("gray.600", "gray.300")}
           onClick={() => {
             scroller.scrollTo(sectionName, {
               duration: 600,
@@ -172,24 +180,9 @@ interface NavItem {
 }
 
 const NAV_ITEMS: Array<NavItem> = [
-  {
-    label: "About",
-    sectionName: "About-Section"
-  },
-  {
-    label: "Featured Work",
-    sectionName: "Projects-Section"
-  },
-  {
-    label: "Experience",
-    sectionName: "Experience-Section"
-  },
-  {
-    label: "Skills",
-    sectionName: "Skills-Section"
-  },
-  {
-    label: "Contact",
-    sectionName: "Contact-Section"
-  }
+  { label: "About", sectionName: "About-Section" },
+  { label: "Featured Work", sectionName: "Projects-Section" },
+  { label: "Experience", sectionName: "Experience-Section" },
+  { label: "Skills", sectionName: "Skills-Section" },
+  { label: "Contact", sectionName: "Contact-Section" }
 ]

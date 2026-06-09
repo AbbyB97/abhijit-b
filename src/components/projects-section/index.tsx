@@ -1,55 +1,74 @@
 import {
   Box,
+  Flex,
   Heading,
-  ListItem,
   SimpleGrid,
+  Tag,
+  TagLabel,
   Text,
-  UnorderedList,
+  Wrap,
+  WrapItem,
   useColorModeValue
 } from "@chakra-ui/react"
 import { Element } from "react-scroll"
 import profileData from "static/portfolioProfile"
 
 const ProjectSection = () => {
-  const cardBorder = useColorModeValue("gray.200", "whiteAlpha.300")
+  const cardBorder = useColorModeValue("gray.200", "whiteAlpha.200")
   const cardBg = useColorModeValue("white", "whiteAlpha.50")
-  const hoverBorder = useColorModeValue("gray.300", "whiteAlpha.500")
-  const mutedText = useColorModeValue("gray.600", "gray.300")
-  const bodyText = useColorModeValue("gray.600", "gray.200")
+  const hoverBorder = useColorModeValue("gray.400", "whiteAlpha.400")
+  const bodyText = useColorModeValue("gray.600", "gray.300")
+  const tagBg = useColorModeValue("gray.100", "whiteAlpha.150")
+  const tagColor = useColorModeValue("gray.600", "gray.300")
 
   return (
     <Element name="Projects-Section">
       <Box py={{ base: 10, md: 14 }}>
-        <Heading size="lg" mb={8}>
+        <Heading size="lg" mb={8} letterSpacing="-0.02em">
           Featured Work
         </Heading>
-        <SimpleGrid columns={{ base: 1, md: 2 }} spacing={6}>
+        <SimpleGrid columns={{ base: 1, md: 2 }} spacing={5}>
           {profileData.featuredWork.map((work) => (
-            <Box
+            <Flex
               key={work.title}
+              direction="column"
               p={{ base: 5, md: 6 }}
               rounded="xl"
               borderWidth="1px"
               borderColor={cardBorder}
               bg={cardBg}
-              transition="transform 0.2s ease, border-color 0.2s ease"
-              _hover={{
-                transform: "translateY(-2px)",
-                borderColor: hoverBorder
-              }}
+              transition="border-color 0.15s ease"
+              _hover={{ borderColor: hoverBorder }}
             >
-              <Heading size="md" mb={3}>
+              <Heading size="sm" mb={3} letterSpacing="-0.01em">
                 {work.title}
               </Heading>
-              <Text color={mutedText} mb={2}>
-                Key focus areas:
+              <Text
+                color={bodyText}
+                fontSize="sm"
+                lineHeight="1.75"
+                mb={5}
+                flex={1}
+              >
+                {work.description}
               </Text>
-              <UnorderedList spacing={1} color={bodyText}>
-                {work.highlights.map((item) => (
-                  <ListItem key={item}>{item}</ListItem>
+              <Wrap spacing={2} mt="auto">
+                {work.tags.map((tag) => (
+                  <WrapItem key={tag}>
+                    <Tag
+                      size="sm"
+                      rounded="full"
+                      bg={tagBg}
+                      color={tagColor}
+                      fontSize="xs"
+                      fontWeight={500}
+                    >
+                      <TagLabel>{tag}</TagLabel>
+                    </Tag>
+                  </WrapItem>
                 ))}
-              </UnorderedList>
-            </Box>
+              </Wrap>
+            </Flex>
           ))}
         </SimpleGrid>
       </Box>
