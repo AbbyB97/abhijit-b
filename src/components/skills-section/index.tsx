@@ -22,6 +22,10 @@ const skillGroups = [
 ] as const
 
 export default function SkillsSection() {
+  const cardBorder = useColorModeValue("gray.200", "whiteAlpha.300")
+  const cardBg = useColorModeValue("white", "whiteAlpha.50")
+  const tagBg = useColorModeValue("gray.100", "whiteAlpha.200")
+
   return (
     <Element name="Skills-Section">
       <Box py={{ base: 10, md: 14 }}>
@@ -36,18 +40,14 @@ export default function SkillsSection() {
               p={{ base: 4, md: 5 }}
               rounded="xl"
               borderWidth="1px"
-              borderColor={useColorModeValue("gray.200", "whiteAlpha.300")}
-              bg={useColorModeValue("white", "whiteAlpha.50")}
+              borderColor={cardBorder}
+              bg={cardBg}
             >
               <Text fontWeight={600}>{group.label}</Text>
               <Wrap>
                 {profileData.skills[group.key].map((skill) => (
                   <WrapItem key={skill}>
-                    <Tag
-                      size="md"
-                      rounded="full"
-                      bg={useColorModeValue("gray.100", "whiteAlpha.200")}
-                    >
+                    <Tag size="md" rounded="full" bg={tagBg}>
                       <TagLabel>{skill}</TagLabel>
                     </Tag>
                   </WrapItem>

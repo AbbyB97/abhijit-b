@@ -16,6 +16,11 @@ const contactItems = [
 ]
 
 const ContactSection = () => {
+  const cardBorder = useColorModeValue("gray.200", "whiteAlpha.300")
+  const cardBg = useColorModeValue("white", "whiteAlpha.50")
+  const labelColor = useColorModeValue("gray.500", "gray.400")
+  const linkColor = useColorModeValue("gray.800", "gray.100")
+
   return (
     <Element name="Contact-Section">
       <Box py={{ base: 10, md: 14 }}>
@@ -29,20 +34,16 @@ const ContactSection = () => {
               p={5}
               rounded="xl"
               borderWidth="1px"
-              borderColor={useColorModeValue("gray.200", "whiteAlpha.300")}
-              bg={useColorModeValue("white", "whiteAlpha.50")}
+              borderColor={cardBorder}
+              bg={cardBg}
             >
-              <Text
-                mb={2}
-                fontSize="sm"
-                color={useColorModeValue("gray.500", "gray.400")}
-              >
+              <Text mb={2} fontSize="sm" color={labelColor}>
                 {item.label}
               </Text>
               <Link
                 href={item.href}
                 isExternal={item.label !== "Email"}
-                color={useColorModeValue("gray.800", "gray.100")}
+                color={linkColor}
                 fontWeight={600}
               >
                 {item.label === "Email"

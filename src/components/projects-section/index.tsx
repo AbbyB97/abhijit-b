@@ -11,6 +11,12 @@ import { Element } from "react-scroll"
 import profileData from "static/portfolioProfile"
 
 const ProjectSection = () => {
+  const cardBorder = useColorModeValue("gray.200", "whiteAlpha.300")
+  const cardBg = useColorModeValue("white", "whiteAlpha.50")
+  const hoverBorder = useColorModeValue("gray.300", "whiteAlpha.500")
+  const mutedText = useColorModeValue("gray.600", "gray.300")
+  const bodyText = useColorModeValue("gray.600", "gray.200")
+
   return (
     <Element name="Projects-Section">
       <Box py={{ base: 10, md: 14 }}>
@@ -24,21 +30,21 @@ const ProjectSection = () => {
               p={{ base: 5, md: 6 }}
               rounded="xl"
               borderWidth="1px"
-              borderColor={useColorModeValue("gray.200", "whiteAlpha.300")}
-              bg={useColorModeValue("white", "whiteAlpha.50")}
+              borderColor={cardBorder}
+              bg={cardBg}
               transition="transform 0.2s ease, border-color 0.2s ease"
               _hover={{
                 transform: "translateY(-2px)",
-                borderColor: useColorModeValue("gray.300", "whiteAlpha.500")
+                borderColor: hoverBorder
               }}
             >
               <Heading size="md" mb={3}>
                 {work.title}
               </Heading>
-              <Text color={useColorModeValue("gray.600", "gray.300")} mb={2}>
+              <Text color={mutedText} mb={2}>
                 Key focus areas:
               </Text>
-              <UnorderedList spacing={1} color={useColorModeValue("gray.600", "gray.200")}>
+              <UnorderedList spacing={1} color={bodyText}>
                 {work.highlights.map((item) => (
                   <ListItem key={item}>{item}</ListItem>
                 ))}
