@@ -1,135 +1,52 @@
 import {
   Box,
-  Grid,
-  GridItem,
   Heading,
-  HStack,
-  IconButton,
+  ListItem,
   SimpleGrid,
   Text,
-  useBreakpointValue,
-  Icon,
-  Image
+  UnorderedList,
+  useColorModeValue
 } from "@chakra-ui/react"
 import { Element } from "react-scroll"
-import React from "react"
-import ProjectCard from "widgets/project-card"
-import projectCardDataArray from "static/portfolioProfile"
-import Slider from "react-slick"
-import { BiLeftArrowAlt, BiRightArrowAlt } from "react-icons/bi"
-// https://pbs.twimg.com/profile_images/1059481903496073218/NZLDqzp6_400x400.jpg
-const settings = {
-  dots: false,
-  arrows: false,
-  fade: true,
-  infinite: true,
-  autoplay: true,
-  speed: 500,
-  autoplaySpeed: 5000,
-  slidesToShow: 1,
-  slidesToScroll: 1
-}
-const ProjectSection = () => {
-  const [slider, setSlider] = React.useState<Slider | null>(null)
-  const side = useBreakpointValue({ base: "30%", md: "40px" })
-  const top = useBreakpointValue({ base: "90%", md: "50%" })
-  const firstProjectLink = projectCardDataArray.projectCards[0].projectLink
-  const [projectLink, setProjectLink] = React.useState<string>(firstProjectLink)
+import profileData from "static/portfolioProfile"
 
+const ProjectSection = () => {
   return (
     <Element name="Projects-Section">
-      <Heading textAlign="center" my={12}>
-        My recent projects
-      </Heading>
-      <Slider
-        {...settings}
-        ref={(slider) => setSlider(slider)}
-        beforeChange={(current, next) => {
-          console.log("before change", current, next)
-          setProjectLink(projectCardDataArray.projectCards[next].projectLink)
-        }}
-      >
-        {projectCardDataArray.projectCards.map((card, index) => (
-          <Box key={index}>
-            <Heading
-              mb="10px"
-              textAlign="center"
-              fontSize={{ base: "21px", lg: "24px" }}
-              color="gray.400"
-              fontWeight={500}
+      <Box py={{ base: 10, md: 14 }}>
+        <Heading size="lg" mb={8}>
+          Featured Work
+        </Heading>
+        <SimpleGrid columns={{ base: 1, md: 2 }} spacing={6}>
+          {profileData.featuredWork.map((work) => (
+            <Box
+              key={work.title}
+              p={{ base: 5, md: 6 }}
+              rounded="xl"
+              borderWidth="1px"
+              borderColor={useColorModeValue("gray.200", "whiteAlpha.300")}
+              bg={useColorModeValue("white", "whiteAlpha.50")}
+              transition="transform 0.2s ease, border-color 0.2s ease"
+              _hover={{
+                transform: "translateY(-2px)",
+                borderColor: useColorModeValue("gray.300", "whiteAlpha.500")
+              }}
             >
-              {card.projectHeading}
-            </Heading>
-            <HStack
-              h={{ base: "22.5rem", md: "auto" }}
-              justify="center"
-              align="center"
-            >
-              <IconButton
-                aria-label="left-arrow"
-                variant="ghost"
-                position="absolute"
-                left={side}
-                top={top}
-                transform={"translate(0%, -50%)"}
-                zIndex={2}
-                onClick={() => slider?.slickPrev()}
-                _hover={{ bg: "none" }}
-                _active={{ bg: "none" }}
-              >
-                <Icon
-                  as={BiLeftArrowAlt}
-                  color={{ base: "white", md: "gray.500" }}
-                  size="30px"
-                />
-              </IconButton>
-              <Image
-                h="350px"
-                src={card.imgSrc}
-                alt="achievements-img"
-                onClick={() => {
-                  window.open(projectLink, "_blank")
-                }}
-              />
-              <IconButton
-                aria-label="right-arrow"
-                variant="ghost"
-                position="absolute"
-                right={side}
-                top={top}
-                transform={"translate(0%, -50%)"}
-                zIndex={2}
-                onClick={() => slider?.slickNext()}
-                _hover={{ bg: "none" }}
-                _active={{ bg: "none" }}
-              >
-                <Icon
-                  as={BiRightArrowAlt}
-                  color={{ base: "white", md: "gray.500" }}
-                  size="30px"
-                />
-              </IconButton>
-            </HStack>
-          </Box>
-        ))}
-      </Slider>
-      {/* <Grid templateColumns={{ base: "1fr", md: "repeat(2,1fr)" }} gap="1rem">
-        {projectCardDataArray.projectCards.map((projectData, index) => (
-          <GridItem
-            key={index}
-            colSpan={{
-              base: 1,
-              md:
-                index + 1 === projectCardDataArray.projectCards.length &&
-                projectCardDataArray.projectCards.length % 2 !== 0
-                  ? 2
-                  : 1
-            }}
-          >
-            <ProjectCard projectCardData={projectData} />
-          </GridItem>
-        ))}
-      </Grid> */}
+              <Heading size="md" mb={3}>
+                {work.title}
+              </Heading>
+              <Text color={useColorModeValue("gray.600", "gray.300")} mb={2}>
+                Key focus areas:
+              </Text>
+              <UnorderedList spacing={1} color={useColorModeValue("gray.600", "gray.200")}>
+                {work.highlights.map((item) => (
+                  <ListItem key={item}>{item}</ListItem>
+                ))}
+              </UnorderedList>
+            </Box>
+          ))}
+        </SimpleGrid>
+      </Box>
     </Element>
   )
 }

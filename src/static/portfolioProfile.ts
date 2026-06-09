@@ -1,81 +1,87 @@
-import {
-  AiFillGithub,
-  AiFillMediumCircle,
-  AiFillTwitterCircle
-} from "react-icons/ai"
-import { TiSocialLinkedinCircular } from "react-icons/ti"
-
 const profileData = {
-  // update these values to see the changes
-  name: "Abhijit",
-  socialHandles: [
+  name: "Abhijit B",
+  title: "Software Engineer",
+  subtitle:
+    "Frontend Platform Engineering • Microfrontends • AI Products • Developer Experience",
+  about:
+    "Software engineer focused on building high-performance React and TypeScript platforms. I design scalable frontend architectures, maintain design systems, and ship AI-powered products that improve developer productivity and delivery speed.",
+  featuredWork: [
     {
-      icon: AiFillTwitterCircle,
-      link: "https://twitter.com/b_abby97"
+      title: "Microfrontend Platform",
+      highlights: [
+        "React 19 foundations",
+        "Module Federation",
+        "Runtime composition",
+        "UI shell architecture"
+      ]
     },
     {
-      icon: AiFillMediumCircle,
-      link: "https://medium.com/@abhijitbansode"
+      title: "Design System & UX Alignment",
+      highlights: [
+        "Shared component library",
+        "Docusaurus documentation",
+        "npm distribution",
+        "Design-dev alignment"
+      ]
     },
     {
-      icon: TiSocialLinkedinCircular,
-      link: "https://www.linkedin.com/in/abhijit-b97/"
+      title: "AI Products",
+      highlights: [
+        "Assistant workflows",
+        "Signal analysis",
+        "Citation management",
+        "Real-time status tracking"
+      ]
     },
     {
-      icon: AiFillGithub,
-      link: "https://github.com/AbbyB97"
+      title: "Data Visualization",
+      highlights: ["Dashboards", "Heatmaps", "Maps", "GraphQL metrics"]
     }
   ],
-  header: {
-    lineOne: "A Self Taught ",
-    lineTwo: "Developer",
-    favouriteQuote: "'Pleasure in the job puts perfection in the work'",
-    favouriteQuoteAuthor: "Aristotle"
-  },
-  // make it true if the projects are hosted online, (You can also add github repository link)
-  hostedProjects: true,
-  // if hostedProjects is true, then add the links to the projects here
-  projectCards: [
-    // add project details
-    // {
-    //   imgSrc: '/images/projects/atmn.png' as string,
-    //   projectHeading: 'Android App ' as string,
-    //   projectDetail:
-    //     'A simple and quick way to start using alternative Indian apps for andorid.' as string,
-    //   projectLink:
-    //     'https://play.google.com/store/apps/details?id=com.apps.atmanirbharindia.release&hl=en_US&gl=US/' as string
-    // },
-    // {
-    //   imgSrc: "/images/projects/eshop.png" as string,
-    //   projectHeading: "Eshop" as string,
-    //   projectDetail:
-    //     "A simple shopping cart project made with MERN stack along with Redux " as string,
-    //   projectLink: "https://e-shop2020.herokuapp.com/" as string
-    // },
-
+  experienceSummary: [
     {
-      imgSrc: "/images/projects/math_quiz.png" as string,
-      projectHeading: "Math Quiz" as string,
-      projectDetail:
-        "A simple Todo app created with ReactJs and redux" as string,
-      projectLink: "https://lq-assignment.netlify.app/" as string
+      period: "2025 — Present",
+      title: "Software Engineer",
+      description:
+        "Leading frontend platform initiatives with React and TypeScript, improving system consistency and team velocity."
     },
     {
-      imgSrc: "/images/projects/ninjaKid.png" as string,
-      projectHeading: "Ninja Kid" as string,
-      projectDetail:
-        "A simple fun mini-game called Ninja Kid made with Godot engine" as string,
-      projectLink:
-        "https://drive.google.com/file/d/1SRJVpihFzcpVxHWa2g5q29RtdsknBwx8/view" as string
+      period: "2023 — 2025",
+      title: "Frontend Engineer",
+      description:
+        "Delivered reusable UI foundations, improved DX tooling, and scaled product experiences across multiple apps."
     },
     {
-      imgSrc: "/images/projects/todo.png" as string,
-      projectHeading: "Todo App" as string,
-      projectDetail:
-        "A simple Todo app created with ReactJs and redux" as string,
-      projectLink: "https://abbyb97.github.io/todoapp/#/" as string
+      period: "2021 — 2023",
+      title: "Product Developer",
+      description:
+        "Built end-to-end web and mobile features with Node.js, Express, MongoDB, and React-based clients."
     }
-  ]
+  ],
+  skills: {
+    frontend: ["React", "Next.js", "TypeScript", "JavaScript", "HTML", "CSS"],
+    backend: ["Node.js", "Express.js", "MongoDB", "Django", "REST APIs"],
+    cloud: ["Vercel", "CI/CD Workflows", "Monitoring Basics", "Performance Optimization"],
+    platformEngineering: [
+      "Microfrontend Architecture",
+      "Module Federation",
+      "Design Systems",
+      "UI Shells",
+      "Developer Experience"
+    ],
+    aiTooling: [
+      "Assistant Workflows",
+      "Prompt Design",
+      "Signal Analysis",
+      "Citation Pipelines",
+      "Real-time Tracking"
+    ]
+  },
+  contact: {
+    github: "https://github.com/AbbyB97",
+    linkedin: "https://www.linkedin.com/in/abhijit-b97/",
+    email: "mailto:abhijitbansode97@gmail.com"
+  }
 }
 
 export default profileData

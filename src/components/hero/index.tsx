@@ -1,74 +1,77 @@
-import { Flex, Heading, Stack, Text, Image } from "@chakra-ui/react"
-import { Element } from "react-scroll"
-import AButton from "widgets/AButton"
-import { scroller } from "react-scroll"
+import {
+  Badge,
+  HStack,
+  Heading,
+  Stack,
+  Text,
+  useColorModeValue
+} from "@chakra-ui/react"
+import { Element, scroller } from "react-scroll"
 import profileData from "static/portfolioProfile"
+import AButton from "widgets/AButton"
 
 export default function HeroWidget() {
   return (
     <Element name="Hero-Section">
       <Stack
-        textAlign={"center"}
-        align={"center"}
-        spacing={{ base: 8, md: 10 }}
-        py={{ base: 20, md: 28 }}
+        pt={{ base: 24, md: 32 }}
+        pb={{ base: 14, md: 20 }}
+        spacing={6}
+        textAlign={{ base: "left", md: "left" }}
       >
-        <Heading
-          fontWeight={600}
-          fontSize={{ base: "3xl", sm: "4xl", md: "6xl" }}
-          lineHeight={"110%"}
+        <Badge
+          w="fit-content"
+          px={3}
+          py={1}
+          rounded="full"
+          bg={useColorModeValue("gray.100", "whiteAlpha.200")}
+          color={useColorModeValue("gray.700", "gray.100")}
         >
-          {profileData.header.lineOne}
-          <Text as={"span"} color={"ABlue.200"}>
-            {profileData.header.lineTwo}
-          </Text>
+          {profileData.title}
+        </Badge>
+        <Heading
+          fontWeight={700}
+          letterSpacing="tight"
+          fontSize={{ base: "3xl", md: "5xl" }}
+          lineHeight={{ base: "1.2", md: "1.1" }}
+        >
+          {profileData.name}
         </Heading>
-        <Text color={"gray.500"} maxW={"3xl"}>
-          {profileData.header.favouriteQuote}
-          {" - "}
-          {profileData.header.favouriteQuoteAuthor}
+        <Text
+          maxW="3xl"
+          color={useColorModeValue("gray.600", "gray.300")}
+          fontSize={{ base: "md", md: "xl" }}
+        >
+          {profileData.subtitle}
         </Text>
-        <Stack spacing={6} direction={"row"}>
+        <HStack spacing={4} flexWrap="wrap">
           <AButton
-            onClick={() => {
-              scroller.scrollTo("Projects-Section", {
-                duration: 750,
-                delay: 50,
-                // smooth: true,
-                // containerId: 'ContainerElementID',
-                smooth: "easeInOutQuint",
-                offset: -65 // Scrolls to element + 50 pixels down the page
-              })
-            }}
             buttontype="primary"
+            onClick={() =>
+              scroller.scrollTo("Projects-Section", {
+                duration: 600,
+                delay: 0,
+                smooth: "easeInOutQuint",
+                offset: -72
+              })
+            }
           >
-            My Projects
+            View Featured Work
           </AButton>
           <AButton
             buttontype="secondary"
-            onClick={() => {
-              scroller.scrollTo("Skills-Section", {
-                duration: 750,
-                delay: 50,
-                // smooth: true,
-                // containerId: 'ContainerElementID',
+            onClick={() =>
+              scroller.scrollTo("Contact-Section", {
+                duration: 600,
+                delay: 0,
                 smooth: "easeInOutQuint",
-                offset: -65 // Scrolls to element + 50 pixels down the page
+                offset: -72
               })
-            }}
+            }
           >
-            About Me
+            Contact
           </AButton>
-        </Stack>
-        <Flex w={"full"} justify="center">
-          <Image
-            borderRadius="full"
-            src="/images/avatar_ab.jpeg"
-            alt="avatar_image"
-            maxW="250px"
-            maxH="250px"
-          />
-        </Flex>
+        </HStack>
       </Stack>
     </Element>
   )
