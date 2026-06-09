@@ -1,88 +1,71 @@
-import { ReactElement } from "react"
 import {
   Box,
-  SimpleGrid,
-  Icon,
-  Text,
-  Stack,
-  Flex,
   Heading,
-  HStack
+  SimpleGrid,
+  Stack,
+  Tag,
+  TagLabel,
+  Text,
+  Wrap,
+  WrapItem,
+  useColorModeValue
 } from "@chakra-ui/react"
-import {
-  FcPhoneAndroid,
-  FcDatabase,
-  FcDonate,
-  FcInTransit,
-  FcGlobe
-} from "react-icons/fc"
-// import { BsGlobe } from 'react-icons/bs'
-import { FaGamepad } from "react-icons/fa"
 import { Element } from "react-scroll"
-interface FeatureProps {
-  title: string
-  text: string
-  icon: ReactElement
-}
+import profileData from "static/portfolioProfile"
 
-const SkillsWidget = ({ title, text, icon }: FeatureProps) => {
-  return (
-    <Stack justify="center" textAlign="center">
-      <HStack justify="center">
-        <Flex
-          w={16}
-          h={16}
-          align={"center"}
-          justify={"center"}
-          color={"white"}
-          rounded={"full"}
-          bg={"gray.100"}
-          mb={1}
-        >
-          {icon}
-        </Flex>
-      </HStack>
-
-      <Text fontWeight={600}>{title}</Text>
-      <Text color={"gray.600"}>{text}</Text>
-    </Stack>
-  )
-}
+const skillGroups = [
+  { label: "Frontend", key: "frontend" as const },
+  { label: "Platform Engineering", key: "platformEngineering" as const },
+  { label: "Backend", key: "backend" as const },
+  { label: "Cloud", key: "cloud" as const },
+  { label: "AI", key: "ai" as const }
+]
 
 export default function SkillsSection() {
+  const cardBorder = useColorModeValue("gray.200", "whiteAlpha.200")
+  const cardBg = useColorModeValue("white", "whiteAlpha.50")
+  const tagBg = useColorModeValue("gray.100", "whiteAlpha.150")
+  const tagColor = useColorModeValue("gray.600", "gray.300")
+  const labelColor = useColorModeValue("gray.700", "gray.200")
+
   return (
     <Element name="Skills-Section">
-      <Box p={4}>
-        <Heading textAlign="center" my={12}>
+      <Box py={{ base: 10, md: 14 }}>
+        <Heading size="lg" mb={8} letterSpacing="-0.02em">
           Skills
         </Heading>
-        <SimpleGrid columns={{ base: 1, md: 2 }} spacing={10}>
-          <SkillsWidget
-            icon={<Icon as={FcGlobe} w={10} h={10} />}
-            title={"Web Development"}
-            text={
-              "Experienced in making responsive scalable Web apps with React & Next.js."
-            }
-          />
-          <SkillsWidget
-            icon={<Icon as={FcPhoneAndroid} w={10} h={10} />}
-            title={"Mobile Development"}
-            text={"Experienced in making hybrid mobile apps with React Native"}
-          />
-          <SkillsWidget
-            icon={<Icon as={FcDatabase} w={10} h={10} />}
-            title={"Backend Development"}
-            text={
-              "Understanding of the backend technologies like Node.js, Express.js, MongoDB, Django."
-            }
-          />
-          <SkillsWidget
-            icon={<Icon as={FaGamepad} fill="blue.400" w={10} h={10} />}
-            title={"Game Development"}
-            text={
-              "I also make games as a hobby. I have experience in game engines like Unity & Godot."
-            }
-          />
+        <SimpleGrid columns={{ base: 1, md: 2 }} spacing={4}>
+          {skillGroups.map((group, i) => (
+            <Stack
+              key={group.key}
+              spacing={3}
+              p={{ base: 4, md: 5 }}
+              rounded="xl"
+              borderWidth="1px"
+              borderColor={cardBorder}
+              bg={cardBg}
+              gridColumn={i === skillGroups.length - 1 && skillGroups.length % 2 !== 0 ? { md: "span 2" } : undefined}
+            >
+              <Text fontWeight={600} fontSize="sm" color={labelColor} letterSpacing="0.02em">
+                {group.label}
+              </Text>
+              <Wrap spacing={2}>
+                {profileData.skills[group.key].map((skill) => (
+                  <WrapItem key={skill}>
+                    <Tag
+                      size="md"
+                      rounded="full"
+                      bg={tagBg}
+                      color={tagColor}
+                      fontWeight={500}
+                    >
+                      <TagLabel>{skill}</TagLabel>
+                    </Tag>
+                  </WrapItem>
+                ))}
+              </Wrap>
+            </Stack>
+          ))}
         </SimpleGrid>
       </Box>
     </Element>

@@ -1,26 +1,33 @@
-import { Box, Container, Divider, useColorModeValue } from "@chakra-ui/react"
-import AchievementsCarousel from "components/achievements-carousel"
+import { Box, useColorModeValue } from "@chakra-ui/react"
+import AboutSection from "components/about-section"
+import ContactSection from "components/contact-section"
+import CurrentFocus from "components/current-focus"
+import ExperienceSummary from "components/experience-summary"
 import Footer from "components/footer"
 import Hero from "components/hero"
 import ProjectSection from "components/projects-section"
 import SkillsSection from "components/skills-section"
-import SocialHandles from "components/social-handles"
-import React from "react"
 
 const Home = () => {
+  const dividerColor = useColorModeValue("gray.200", "whiteAlpha.100")
+
   return (
-    <Container maxW="5xl">
+    <Box>
       <Hero />
-      <Divider bg={useColorModeValue("ABlue.200", "gray.200")} />
+      <Box h="1px" bg={dividerColor} />
+      <AboutSection />
+      <Box h="1px" bg={dividerColor} />
+      <CurrentFocus />
+      <Box h="1px" bg={dividerColor} />
       <ProjectSection />
-      <Divider mt="4rem" bg={useColorModeValue("ABlue.200", "gray.200")} />
+      <Box h="1px" bg={dividerColor} />
+      <ExperienceSummary />
+      <Box h="1px" bg={dividerColor} />
       <SkillsSection />
-      <Divider mt="4rem" bg={useColorModeValue("ABlue.200", "gray.200")} />
-      <AchievementsCarousel />
-      <Divider mt="0rem" bg={useColorModeValue("ABlue.200", "gray.200")} />
-      <SocialHandles />
+      <Box h="1px" bg={dividerColor} />
+      <ContactSection />
       <Footer />
-    </Container>
+    </Box>
   )
 }
 
